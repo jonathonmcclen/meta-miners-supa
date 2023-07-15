@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react';
 import { Avatar, Button, ButtonGroup, Col, Panel, Placeholder, Progress, Row } from 'rsuite';
+import { supabaseClient } from '../../config/supabase-client';
+import { useAuth } from '../../hooks/Auth';
 function SimulationCard({sim}){
     const [percent, setPercent] = useState(0);
+    const {user} = useAuth()
 
     useEffect(() =>{
         sim['sim_type']['gestation']
@@ -14,27 +17,46 @@ function SimulationCard({sim}){
 
         if (Math.floor((difMins/sim['sim_type']['gestation']) * 100 ) > 100){
             setPercent(100)
-            fetch('https://nrpcmqkzpwyhpqnxkftn.supabase.co/functions/v1/roll-for-item', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(
-                {
-                    "planet_id": sim['id'],
-                   "user_id": "8275a7a6-5a5a-4893-b3f6-3f2580420750"
-                }
-            )
-            })
-            .then(response => response.json())
-            .then(response => console.log(JSON.stringify(response)))
+            invokeFunction()
         } else {
             setPercent( Math.floor((difMins/sim['sim_type']['gestation']) * 100 ))
             
         }
 
     }, [])
+
+    const invokeFunction = async () => {
+        const { data, error } = await supabaseClient.functions.invoke('roll-for-Item', {
+            header: {
+                'Content-Type': 'application/json',
+                'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24iLCJleHAiOjE5ODM4MTI5OTZ9.CRXP1A7WOeoJeXxjNni43kdQwgnWNReilDMblYTn_I0'
+            },
+            body: {
+                planet_id: sim['id'],
+                user_id: user.id
+            }
+        }
+        )
+    }
+
+    // const invokeFunction = async () => {
+    //     fetch('https://nrpcmqkzpwyhpqnxkftn.supabase.co/functions/v1/roll-for-item', {
+    //         method: 'POST',
+    //         headers: {
+    //             // 'Accept': 'application/json',
+    //             'Content-Type': 'application/json',
+    //             'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5ycGNtcWt6cHd5aHBxbnhrZnRuIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODg3ODEwODUsImV4cCI6MjAwNDM1NzA4NX0.2cENQpuc3wG0Z5lO7U5CCRFNV2NDtxFrI10tR1bXGVk'
+    //         },
+    //         body: JSON.stringify(
+    //             {
+    //                 "planet_id": sim['id'],
+    //                 "user_id": "8275a7a6-5a5a-4893-b3f6-3f2580420750"
+    //             }
+    //         )
+    //         })
+    //         .then(response => response.json())
+    //         .then(response => console.log(JSON.stringify(response)))
+    // }
 
     
 

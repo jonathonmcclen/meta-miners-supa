@@ -3,17 +3,22 @@
 // This enables autocomplete, go to definition, etc.
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts"
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.7.0"
-import { corsHeaders } from "../_shared/cors";
-// import { corsHeaders } from "../../_shared/cors"
+// import { corsHeaders } from "../../_shared/cors";
 
 const supUrl: string = Deno.env.get("_SUPABASE_URL")
 const supKey: string = Deno.env.get("_SUPABASE_SERVICE_KEY")
 const supabase = createClient(supUrl, supKey);
 
-serve(async (req) => {
-  const { user_id, planet_id } = await req.json();
+const corsHeaders = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-typeappend,delete,entries,foreach,get,has,keys,set,values,Authorization',
+  'Access-Control-Allow-Methods': "POST, GET, OPTIONS, DELETE, PUT"
+}
 
-  if (req.method === 'OPTIONS') {
+serve(async (req) => {
+  const { method, user_id, planet_id } = await req.json();
+
+  if (req.method === 'POST') {
     return new Response('ok', {
       headers: corsHeaders
     })
@@ -149,7 +154,11 @@ serve(async (req) => {
 
     return new Response(
       JSON.stringify(dataReturn),
-      { headers: { ...corsHeaders, "Content-Type": "application/json" } },
+      {
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+        status: 200
+      },
+
     )
   } catch (error) {
     return new Response(JSON.stringify({ error: error.message }), {
