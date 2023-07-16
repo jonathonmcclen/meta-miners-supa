@@ -8,7 +8,14 @@ function SimulationCard({sim}){
 
     useEffect(() =>{
         sim['sim_type']['gestation']
-        let created_at =  Date.parse(sim['created_at'])
+        let created_at = new Date
+
+        if (sim['last_roll']){
+            created_at =  Date.parse(sim['last_roll'])
+        } else {
+            created_at =  Date.parse(sim['created_at'])
+        }
+        
         let now = new Date()
         
         let dif = now - created_at
@@ -26,18 +33,25 @@ function SimulationCard({sim}){
     }, [])
 
     const invokeFunction = async () => {
-        const { data, error } = await supabaseClient.functions.invoke('roll-for-Item', {
-            header: {
-                'Content-Type': 'application/json',
-                'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24iLCJleHAiOjE5ODM4MTI5OTZ9.CRXP1A7WOeoJeXxjNni43kdQwgnWNReilDMblYTn_I0'
-            },
+        const { data, error } = await supabaseClient.functions.invoke('roll-for-item', {
             body: {
-                planet_id: sim['id'],
+                planet_id: `${sim['id']}`,
                 user_id: user.id
             }
         }
         )
     }
+
+    //   const invokeFunction = async () => {
+    //     const { data, error } = await supabaseClient.functions.invoke('hello-world', {
+    //         body: {
+    //             planet_id: sim['id'],
+    //             user_id: user.id
+    //         }
+    //     }
+    //     )
+    // }
+
 
     // const invokeFunction = async () => {
     //     fetch('https://nrpcmqkzpwyhpqnxkftn.supabase.co/functions/v1/roll-for-item', {

@@ -11,20 +11,18 @@ const supabase = createClient(supUrl, supKey);
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-typeappend,delete,entries,foreach,get,has,keys,set,values,Authorization',
-  'Access-Control-Allow-Methods': "POST, GET, OPTIONS, DELETE, PUT"
+  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 }
 
-serve(async (req) => {
-  const { method, user_id, planet_id } = await req.json();
 
-  if (req.method === 'POST') {
-    return new Response('ok', {
-      headers: corsHeaders
-    })
+serve(async (req) => {
+
+  if (req.method === 'OPTIONS') {
+    return new Response('ok', { headers: corsHeaders })
   }
 
   try {
+    const { user_id, planet_id } = await req.json();
 
     /*
       req = {
@@ -91,15 +89,15 @@ serve(async (req) => {
         //! check if already has item
         const { data: alreadyItem } = await supabase
           .from('inventory')
-          .select()
+          .select('*')
           .eq('item_id', new_item_name["id"])
           .eq('user_id', user_id)
           .single()
 
-        dataReturn = {
-          item: alreadyItem,
-          already_exists: "n/a"
-        }
+        // dataReturn = {
+        //   item: alreadyItem,
+        //   already_exists: "n/a"
+        // }
 
         //if already has item add one to amount
         if (alreadyItem && alreadyItem["count"] < 99) {
@@ -133,11 +131,17 @@ serve(async (req) => {
         }
 
         // set last roll to time now - remainder of devision
-        const { data } = await supabase
+        const { data: updateTime } = await supabase
           .from('simulations')
-          .update({ last_roll: now_date.toString() })
+          .update({ last_roll: ((new Date()).toISOString()).toLocaleString('zh-TW') })
           .eq("id", planet_id)
           .select()
+
+        dataReturn = {
+          item: new_item_name,
+          already_exists: false,
+          time: ((new Date()).toISOString()).toLocaleString('zh-TW')
+        }
 
       }
 

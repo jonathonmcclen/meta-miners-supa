@@ -26,7 +26,7 @@ function Simulator(){
       
             let { data, error } = await supabase
               .from('simulations')
-              .select(`uniq, name, created_at, sim_type ( * )`)
+              .select(`id, uniq, name,last_roll, created_at, sim_type ( * )`)
               .eq('user_id', user.id)  
        
             if (error) {
