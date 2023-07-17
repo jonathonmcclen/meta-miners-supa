@@ -19,6 +19,7 @@ function Inventory() {
         .from('inventory')
         .select('*, items ( * )') 
         .eq('user_id', user.id)
+        .order('created_at', { ascending: true })
 
           if (error) {
             console.warn(error)

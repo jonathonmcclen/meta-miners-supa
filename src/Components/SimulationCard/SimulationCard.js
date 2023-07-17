@@ -1,13 +1,18 @@
 import { useEffect, useState } from 'react';
-import { Avatar, Button, ButtonGroup, Col, Panel, Placeholder, Progress, Row } from 'rsuite';
+import { Avatar, Button, ButtonGroup, Col, Drawer, Panel, Placeholder, Progress, Row, Stack } from 'rsuite';
 import { supabaseClient } from '../../config/supabase-client';
 import { useAuth } from '../../hooks/Auth';
+import ItemDropCard from '../ItemDropCard';
 function SimulationCard({sim}){
     const [percent, setPercent] = useState(0);
     const {user} = useAuth()
+    const [open, setOpen] = useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
 
-    useEffect(() =>{
-        sim['sim_type']['gestation']
+    const [drops, setDrops] = useState([])
+
+    function checkElapsed(){
         let created_at = new Date
 
         if (sim['last_roll']){
@@ -24,22 +29,84 @@ function SimulationCard({sim}){
 
         if (Math.floor((difMins/sim['sim_type']['gestation']) * 100 ) > 100){
             setPercent(100)
-            invokeFunction()
         } else {
             setPercent( Math.floor((difMins/sim['sim_type']['gestation']) * 100 ))
+        }
+        console.log('re-did math... your welcome')
+        setTimeout(checkElapsed, 10000)
+    }
+
+    async function getDrops() {
+        let { data: possibleDrops, error } = await supabaseClient
+          .from('items')
+          .select('*') 
+          .filter('planets', 'cs', `{"${sim['sim_type']['id']}"}`)
+          .order('rarity', { ascending: true })
+ 
+        setDrops(possibleDrops)
+      }
+
+    useEffect(() =>{
+        checkElapsed()
+        getDrops()
+    }, [])
+
+    // useEffect(() =>{
+
+    //     simTypes.map(item => {
+    //       if (item.value == value){
+    //         setSelected(item)
+    //       }
+    //       console.log(selected)
+    //     })
+  
+    //     async function getDrops() {
+    //       let { data: possibleDrops, error } = await supabaseClient
+    //         .from('items')
+    //         .select('*') 
+    //         .filter('planets', 'cs', `{"${selected['value']}"}`)
+    //         .order('rarity', { ascending: true })
+   
+    //       setDrops(possibleDrops)
+    //     }
+        
+    //     getDrops()
+    //     console.log(drops)
+  
+    //   }, [value])
+
+    const invokeFunction = async () => {
+        let created_at = new Date
+
+        if (sim['last_roll']){
+            created_at =  Date.parse(sim['last_roll'])
+        } else {
+            created_at =  Date.parse(sim['created_at'])
+        }
+        
+        let now = new Date()
+        
+        let dif = now - created_at
+
+        let difMins = Math.floor((dif/60000))
+
+        if (Math.floor((difMins/sim['sim_type']['gestation']) * 100 ) > 100){
+            setPercent(100)
+            const { data, error } = await supabaseClient.functions.invoke('roll-for-item', {
+                body: {
+                    planet_id: `${sim['id']}`,
+                    user_id: user.id
+                }
+            })
+            setTimeout(window.location.reload(), 5000) //! instead have it retunr iten and auto open modal to show new item + sound effect
+        } else {
+            setPercent( Math.floor((difMins/sim['sim_type']['gestation']) * 100 ))
+            handleOpen()
+            // alert('No Resources to Collect!')
             
         }
 
-    }, [])
 
-    const invokeFunction = async () => {
-        const { data, error } = await supabaseClient.functions.invoke('roll-for-item', {
-            body: {
-                planet_id: `${sim['id']}`,
-                user_id: user.id
-            }
-        }
-        )
     }
 
     //   const invokeFunction = async () => {
@@ -88,27 +155,62 @@ function SimulationCard({sim}){
     const color = percent === 100 ? '#52c41a' : '#3385ff';
 
     return(
-    <Panel header={sim["name"]} style={{width: "250px", height: "390px", alignContent: "center"}}  bordered>
-        <img height="200px" width="200px" src={sim["sim_type"]["world_image"]} />
-        <Progress.Line percent={percent} strokeColor={color} status={status} />
-        <p>{sim["uniq"]}</p>
-        <p>{sim["sim_type"]["name"]}</p>
-            {/* <ButtonGroup>
-                <Button onClick={decline}>-</Button>
-                <Button onClick={increase}>+</Button>
-            </ButtonGroup> */}
-            {/* <Row>
-                <Col md={6}>
-                <Progress.Line vertical percent={percent} strokeColor={color} status={status} />
-                </Col>
-                <Col md={6}>
-                <div style={{ width: 120, marginTop: 10 }}>
-                    <Progress.Circle percent={percent} strokeColor={color} status={status} />
+    <>
+        <Panel onClick={invokeFunction} header={sim["name"]} style={{width: "250px", height: "390px", alignContent: "center"}}  bordered>
+            <img height="200px" width="200px" src={sim["sim_type"]["world_image"]} />
+            <Progress.Line percent={percent} strokeColor={color} status={status} />
+            <p>{sim["uniq"]}</p>
+            <p>{sim["sim_type"]["name"]}</p>
+                {/* <ButtonGroup>
+                    <Button onClick={decline}>-</Button>
+                    <Button onClick={increase}>+</Button>
+                </ButtonGroup> */}
+                {/* <Row>
+                    <Col md={6}>
+                    <Progress.Line vertical percent={percent} strokeColor={color} status={status} />
+                    </Col>
+                    <Col md={6}>
+                    <div style={{ width: 120, marginTop: 10 }}>
+                        <Progress.Circle percent={percent} strokeColor={color} status={status} />
+                    </div>
+                    </Col>
+                </Row> */}
+            {/* <Placeholder.Paragraph /> */} 
+        </Panel>
+
+        <Drawer backdrop={"true"} open={open} onClose={() => setOpen(false)}>
+            <Drawer.Header>
+              <Drawer.Title>{sim["name"]}</Drawer.Title>
+              <Drawer.Actions>
+                <Button onClick={() => setOpen(false)}>Close</Button>
+                <Button onClick={() => setOpen(false)} appearance="primary">
+                  Edit
+                </Button>
+              </Drawer.Actions>
+            </Drawer.Header>
+            <Drawer.Body>
+                <>
+                <div style={{backgroundColor: '#2a2357', justifyContent: 'center'}}>
+                    <img height="200px" width="200px" style={{marginLeft: 'auto',marginRight: 'auto', display: 'block'}} src={sim["sim_type"]["world_image"]} />
                 </div>
-                </Col>
-            </Row> */}
-        {/* <Placeholder.Paragraph /> */}
-    </Panel>
+                    <Progress.Line percent={percent} strokeColor={color} status={status} />
+                    <h4>Description:</h4>
+                    <p>{sim["sim_type"]["description"]}</p>
+                    <h4>Drops</h4>
+                    <Stack wrap spacing={6}>
+                    {drops?.map((item) => ( <ItemDropCard item={item}/> ))}
+                    {/* <p>{simTypes && sim[2]['description']}</p> */}
+                    </Stack>
+                    {/* <p>{simTypes && sim[2]['description']}</p> */} 
+                    <hr/>
+                </>
+                <Button appearance="primary" color="red" block>
+                    Delete
+                </Button>
+                <hr/>
+            </Drawer.Body>
+          </Drawer>
+    </>
     )
 }
 

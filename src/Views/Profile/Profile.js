@@ -75,7 +75,7 @@ function Profile() {
         <Form.Control id="email" type="text" value={user.email} disabled />
       </Form.Group>
       <Form.Group>
-        <Form.ControlLabel htmlFor="username">Name</Form.ControlLabel>
+        <Form.ControlLabel htmlFor="username">Username</Form.ControlLabel>
         <Form.Control
           id="username"
           type="text"

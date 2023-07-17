@@ -2,6 +2,8 @@ import { Avatar, Button, Form, Panel, Placeholder, SelectPicker, Stack } from "r
 import { useAuth } from "../../hooks/Auth";
 import { useEffect, useState } from "react";
 import { supabaseClient } from "../../config/supabase-client";
+import ItemCard from "../ItemCard";
+import ItemDropCard from "../ItemDropCard";
 
 function CreateSimForm(){
     const [loadingSimTypes, setLoadingSimTypes] = useState(false)
@@ -12,6 +14,7 @@ function CreateSimForm(){
     
     const [name, setName] = useState('')
     const [value, setValue] = useState([])
+    const [drops, setDrops] = useState([])
 
     useEffect(() => {
         async function getSimTypes() {
@@ -36,17 +39,32 @@ function CreateSimForm(){
             }
             setLoadingSimTypes(false)
         }
+
         getSimTypes()
     }, []) 
 
     useEffect(() =>{
+
       simTypes.map(item => {
         if (item.value == value){
           setSelected(item)
         }
         console.log(selected)
       })
-    }, [value])
+
+      async function getDrops() {
+        let { data: possibleDrops, error } = await supabaseClient
+          .from('items')
+          .select('*') 
+          .filter('planets', 'cs', `{"${selected['value']}"}`)
+          .order('rarity', { ascending: true })
+ 
+        setDrops(possibleDrops)
+      }
+      
+      getDrops()
+
+    }, [value, selected])
 
     const handleCreateSim = async function() {
         const { data, error } = await supabaseClient
@@ -54,7 +72,7 @@ function CreateSimForm(){
         .insert([
             { 
               sim_type: value,
-              name: name,
+              name: name, 
               user_id: user.id
             },
         ])
@@ -69,33 +87,6 @@ function CreateSimForm(){
 
     return(
     <>
-    {selected ?
-      <>
-        <img height="200px" width="200px" src={selected["path"]} />
-        <h4>Description:</h4>
-        <p>{selected["description"]}</p>
-        <h4>Drops</h4>
-        <Stack wrap spacing={6}>
-        <Avatar/><Avatar/><Avatar/><Avatar/><Avatar/><Avatar/><Avatar/><Avatar/><Avatar/><Avatar/><Avatar/><Avatar/><Avatar/><Avatar/><Avatar/><Avatar/><Avatar/><Avatar/><Avatar/><Avatar/>
-        {/* <p>{simTypes && sim[2]['description']}</p> */}
-        </Stack>
-        {/* <p>{simTypes && sim[2]['description']}</p> */}
-        <hr/>
-      </>
-      :
-      <>
-        <Panel height="200px" width="200px" shaded bordered bodyFill style={{ display: 'inline-block', minWidth: 200, minHeight: 200 }}></Panel>
-
-        <h4>Description:</h4>
-        <Placeholder.Paragraph style={{ marginTop: 5 }} />
-        <h4>Drops</h4>
-        <Stack wrap spacing={6}>
-        <Avatar/><Avatar/><Avatar/><Avatar/><Avatar/><Avatar/><Avatar/><Avatar/><Avatar/><Avatar/><Avatar/><Avatar/><Avatar/><Avatar/><Avatar/><Avatar/><Avatar/><Avatar/><Avatar/><Avatar/>
-        {/* <p>{simTypes && sim[2]['description']}</p> */}
-        </Stack>
-        <hr/>
-      </>
-    }
       <Form onSubmit={handleCreateSim} className="form-widget"> 
         <Form.Group>
           <Form.ControlLabel htmlFor="email">Simulation Type</Form.ControlLabel>
@@ -119,11 +110,41 @@ function CreateSimForm(){
         <div>
           <Button className="button block primary" type="submit" >
             Create
-          </Button>
+          </Button> 
         </div>
       </Form>
+      <hr />
+      {selected ?
+      <>
+        <div style={{backgroundColor: '#2a2357', justifyContent: 'center'}}>
+        <img height="200px" width="200px" style={{marginLeft: 'auto',marginRight: 'auto', display: 'block'}} src={selected["path"]} />
+        </div>
+        <h4>Description:</h4>
+        <p>{selected["description"]}</p>
+        <h4>Drops</h4>
+        <Stack wrap spacing={6}>
+        {drops?.map((item) => ( <ItemDropCard item={item}/> ))}
+        {/* <p>{simTypes && sim[2]['description']}</p> */}
+        </Stack>
+        {/* <p>{simTypes && sim[2]['description']}</p> */} 
+        <hr/>
+      </>
+      :
+      <>
+        <Panel height="200px" width="200px" shaded bordered bodyFill style={{ display: 'inline-block', minWidth: 200, minHeight: 200 }}></Panel>
+
+        <h4>Description:</h4>
+        <Placeholder.Paragraph style={{ marginTop: 5 }} /> 
+        <h4>Drops</h4>
+        <Stack wrap spacing={6}> 
+        <Avatar/><Avatar/><Avatar/><Avatar/><Avatar/><Avatar/><Avatar/><Avatar/><Avatar/><Avatar/><Avatar/><Avatar/><Avatar/><Avatar/><Avatar/><Avatar/><Avatar/><Avatar/><Avatar/><Avatar/>
+        {/* <p>{simTypes && sim[2]['description']}</p> */}
+        </Stack>
+        <hr/>
+      </>
+    }
     </>
     )
 }
 
-export default CreateSimForm;
+export default CreateSimForm; 

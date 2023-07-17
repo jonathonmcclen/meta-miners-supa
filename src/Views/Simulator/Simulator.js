@@ -15,13 +15,14 @@ function Simulator(){
     const [username, setUsername] = useState(null)
     const [ethercoin, setEthercoin] = useState(null)
 
-    const [test, setTest] = useState(null)
+    const [secondCount, setSecondCount] = useState(0)
+    const [intervalSet, setIntervalSet] = useState(false)
 
     const { user } = useAuth()
 
     useEffect(() => {
         
-        async function getSimulations() {
+        async function getSimulationsFirst() {
             setLoading(true) 
       
             let { data, error } = await supabase
@@ -34,33 +35,12 @@ function Simulator(){
             } else if (data) {
               setSimulations(data)
             }
-      
             setLoading(false)
         }
 
-        async function testabc() {
-          setLoading(true)  
-    
-          let { data, error } = await supabase
-            .from('sim_types')
-            .select(`*`)
-            .filter('items', 'cs', '{"8"}')  
-            // .cs('items', 3)   
-      
-          if (error) {
-            console.warn(error)
-          } else if (data) {
-            setTest(data)
-          }
-    
-          setLoading(false)
-      }
-
-        getSimulations()
-        // testabc()
-
-        console.log(test) 
-      }, [user])
+        getSimulationsFirst()
+        
+      }, [])
 
 
 
