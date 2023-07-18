@@ -71,7 +71,7 @@ serve(async (req) => {
         // get all items based on rarity and planet
         let { data: items } = await supabase
           .from('items')
-          .select('id, name')
+          .select('id, name, path, rarity')
           .eq('rarity', rarity)
           .filter('planets', 'cs', `{"${sim["sim_type"]["id"]}"}`)
 

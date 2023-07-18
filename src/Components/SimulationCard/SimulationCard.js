@@ -1,16 +1,26 @@
 import { useEffect, useState } from 'react';
-import { Avatar, Button, ButtonGroup, Col, Drawer, Panel, Placeholder, Progress, Row, Stack } from 'rsuite';
+import { Avatar, Button, ButtonGroup, Col, Drawer, Loader, Modal, Panel, Placeholder, Progress, Row, Stack } from 'rsuite';
 import { supabaseClient } from '../../config/supabase-client';
 import { useAuth } from '../../hooks/Auth';
 import ItemDropCard from '../ItemDropCard';
 function SimulationCard({sim}){
-    const [percent, setPercent] = useState(0);
-    const {user} = useAuth()
-    const [open, setOpen] = useState(false);
+    const [percent, setPercent] = useState(0); //progress towards collectable
+    const {user} = useAuth() // current user
+
+    // open planet drawer
+    const [open, setOpen] = useState(false); 
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+    //when 100% = percetn
+    const [collectable, setCollectable] = useState(false)
 
     const [drops, setDrops] = useState([])
+
+    // collectable modal
+    const [openCollectModal, setOpenCollectModal] = useState(false); 
+    const handleOpenModal = () => setOpenCollectModal(true);
+    const handleCloseModal = () => setOpenCollectModal(false);
+    const [collectableObj, setCollectableObj] = useState(null)
 
     function checkElapsed(){
         let created_at = new Date
@@ -28,6 +38,7 @@ function SimulationCard({sim}){
         let difMins = Math.floor((dif/60000))
 
         if (Math.floor((difMins/sim['sim_type']['gestation']) * 100 ) > 100){
+            setCollectable(true)
             setPercent(100)
         } else {
             setPercent( Math.floor((difMins/sim['sim_type']['gestation']) * 100 ))
@@ -91,14 +102,20 @@ function SimulationCard({sim}){
         let difMins = Math.floor((dif/60000))
 
         if (Math.floor((difMins/sim['sim_type']['gestation']) * 100 ) > 100){
+            setCollectable(true)
             setPercent(100)
-            const { data, error } = await supabaseClient.functions.invoke('roll-for-item', {
+            const { data: obj, error } = await supabaseClient.functions.invoke('roll-for-item', {
                 body: {
                     planet_id: `${sim['id']}`,
                     user_id: user.id
                 }
             })
-            setTimeout(window.location.reload(), 5000) //! instead have it retunr iten and auto open modal to show new item + sound effect
+
+            setCollectableObj(obj)
+            handleOpenModal()
+            console.log(collectableObj)
+
+            // setTimeout(window.location.reload(), 5000) //! instead have it retunr iten and auto open modal to show new item + sound effect
         } else {
             setPercent( Math.floor((difMins/sim['sim_type']['gestation']) * 100 ))
             handleOpen()
@@ -156,9 +173,13 @@ function SimulationCard({sim}){
 
     return(
     <>
-        <Panel onClick={invokeFunction} header={sim["name"]} style={{width: "250px", height: "390px", alignContent: "center"}}  bordered>
-            <img height="200px" width="200px" src={sim["sim_type"]["world_image"]} />
+        <Panel  header={sim["name"]} style={{width: "250px", height: "390px", alignContent: "center"}}  bordered>
+            <img onClick={handleOpen} height="200px" width="200px" src={sim["sim_type"]["world_image"]} />
+            { !collectable ? 
             <Progress.Line percent={percent} strokeColor={color} status={status} />
+            :
+            <Button onClick={invokeFunction} block appearance="primary">Collect</Button>
+}
             <p>{sim["uniq"]}</p>
             <p>{sim["sim_type"]["name"]}</p>
                 {/* <ButtonGroup>
@@ -210,6 +231,38 @@ function SimulationCard({sim}){
                 <hr/>
             </Drawer.Body>
           </Drawer>
+
+          <Modal backdrop={"static"} keyboard={false} open={openCollectModal} onClose={handleCloseModal}>
+            <Modal.Header>
+            <Modal.Title></Modal.Title>
+            </Modal.Header>
+
+            <Modal.Body>
+                {collectableObj ? (
+                    <>
+                    <h4>You got a {collectableObj['item']['name']}!</h4>
+                    <Avatar onClick={handleOpen} style={{height: "200px", width: "200px"}}>
+                    <img  height="100%" src={collectableObj['item']["path"]}/>
+                    </Avatar>
+                    <p>{collectableObj['item']["description"]}</p>
+                    <p>{collectableObj['item']["rarity"]}</p>
+                    </>
+                ) : (
+                    <div style={{ textAlign: 'center' }}>
+                        <Loader size="lg" />
+                    </div> 
+                )}
+            
+            </Modal.Body>
+            <Modal.Footer>
+            <Button onClick={handleCloseModal} appearance="primary">
+                close
+            </Button>
+            <Button onClick={handleCloseModal} appearance="subtle">
+                Go To Inventory
+            </Button>
+            </Modal.Footer>
+        </Modal>
     </>
     )
 }
