@@ -2,6 +2,8 @@ import { useState } from "react"
 import { Avatar, Panel, Modal, Button, ButtonToolbar, Placeholder, Drawer } from "rsuite"
 import NewSimModal from "../NewSimModal"
 import CreateSimForm from "../CreateSimForm";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { fas } from '@fortawesome/free-solid-svg-icons'
 
 
 function AddSimulationCard(){
@@ -26,8 +28,10 @@ function AddSimulationCard(){
 
     return(
         <>
+
           <Panel onClick={handleOpen} style={{width: "250px", height: "390px", alignContent: "center"}} bordered>
               <Avatar style={{width: "210px", height: "350px", fontSize: 50}}>+</Avatar>
+              <FontAwesomeIcon icon="fa-solid fa-lock" />
           </Panel>
 
           <Drawer backdrop={"static"} open={open} onClose={() => setOpen(false)}>

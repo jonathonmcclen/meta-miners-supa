@@ -2,7 +2,7 @@ import { Avatar, AvatarGroup, Button, Modal, Stack } from "rsuite";
 import UserIcon from '@rsuite/icons/legacy/User';
 import { useState } from "react";
 
-function ItemDropCard({item}){
+function ItemDropCard({item, outline = false}){
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -30,19 +30,19 @@ function ItemDropCard({item}){
         <>
         {item['rarity'] == 1 &&
             <Avatar onClick={handleOpen} style={common}>
-            <img  height="100%" src={item["path"]}/>
+                {outline ? (<img style={outline && {filter: 'contrast(0)'}} height="100%" src={item["path"]}/>) : (<img height="100%" src={item["path"]}/>)}
             </Avatar>
         }
 
         {item['rarity'] == 2 &&
             <Avatar onClick={handleOpen} style={uncommon}>
-            <img  height="100%" src={item["path"]}/>
+                {outline ? (<img style={outline && {filter: 'contrast(0)'}} height="100%" src={item["path"]}/>) : (<img height="100%" src={item["path"]}/>)}
             </Avatar>
         }
 
         {item['rarity'] == 3 &&
             <Avatar onClick={handleOpen} style={rare}>
-            <img  height="100%" src={item["path"]}/>
+                {outline ? (<img style={outline && {filter: 'contrast(0)'}} height="100%" src={item["path"]}/>) : (<img height="100%" src={item["path"]}/>)}
             </Avatar>
         }
         

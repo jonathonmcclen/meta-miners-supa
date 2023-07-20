@@ -24,6 +24,7 @@ function MainNavigation() {
         <Nav.Item to={'/'} as={NavLink} icon={<HomeIcon />}>Home</Nav.Item>
         <Nav.Item to={'/inventory'} as={NavLink}>Inventory</Nav.Item>
         <Nav.Item to={'/simulator'} as={NavLink}>Simulator</Nav.Item>
+        <Nav.Item to={'/challenges'} as={NavLink}>challenges</Nav.Item>
         {/* <Nav.Item to={'/black-market'} as={NavLink}>Black Market</Nav.Item> */}
         {user ? (
           <Nav.Item as={NavLink} to="#">

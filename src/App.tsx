@@ -14,6 +14,7 @@ import Signup from './pages/SignUp';
 import Profile from './Views/Profile';
 import Inventory from './Views/Inventory';
 import Simulator from './Views/Simulator';
+import Challenges from './Views/Challenges';
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
               <Route path="/profile" element={<Profile />} />
               <Route path="/inventory" element={<Inventory />} />
               <Route path="/simulator" element={<Simulator />} />
+              <Route path="/challenges" element={<Challenges />} />
 
               <Route
                 path="blog"

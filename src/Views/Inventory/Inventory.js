@@ -1,4 +1,4 @@
-import { Panel, Stack } from "rsuite"
+import { Dropdown, Panel, Stack } from "rsuite"
 import ItemCard from "../../Components/ItemCard"
 import { useEffect, useState } from "react"
 import { supabaseClient as supabase } from "../../config/supabase-client"
@@ -35,10 +35,18 @@ function Inventory() {
 
     return(
     <>
+
         <Stack direction="column" spacing={20} alignItems="center" style={{ marginTop: 30 }}>
             <Panel shaded bordered bodyFill style={{ display: 'inline-block', maxWidth: 1000, minWidth: 1000 }}>
                 <Panel>
                     <h1>Inventory</h1>
+                    <Dropdown title="Sort">
+                      <Dropdown.Item>Alphabetical</Dropdown.Item>
+                      <Dropdown.Item>Rarity</Dropdown.Item>
+                      <Dropdown.Item>Simulation Type</Dropdown.Item>
+                      <Dropdown.Item>Most Recent</Dropdown.Item>
+                      <Dropdown.Item>Amount</Dropdown.Item>
+                    </Dropdown>
                     <hr/>
                     <Stack wrap spacing={6}>
                         {items.map((item) => ( <ItemCard item={item}/> ))}

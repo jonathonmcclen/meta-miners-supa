@@ -22,14 +22,14 @@ function CreateSimForm(){
       
             let { data, error } = await supabaseClient
             .from('sim_types')
-            .select('id, name, description, world_image')   
+            .select('id, name, description, world_image, price')   
       
             if (error) {
               console.warn(error)
             } else if (data) {
               let format = data.map(
                 item => ({ 
-                  label: item.name,
+                  label: `${item.name} | ${item.price}`,
                   value: item.id, 
                   description: item.description,
                   path: item.world_image,

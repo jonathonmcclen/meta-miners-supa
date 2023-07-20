@@ -22,6 +22,10 @@ function SimulationCard({sim}){
     const handleCloseModal = () => setOpenCollectModal(false);
     const [collectableObj, setCollectableObj] = useState(null)
 
+    const common = {height: "200px", width: "200px"}
+    const uncommon = {height: "200px", width: "200px", background: '#1e853a'}
+    const rare = {height: "200px", width: "200px", background: '#cc7f02'}
+
     function checkElapsed(){
         let created_at = new Date
 
@@ -241,9 +245,26 @@ function SimulationCard({sim}){
                 {collectableObj ? (
                     <>
                     <h4>You got a {collectableObj['item']['name']}!</h4>
-                    <Avatar onClick={handleOpen} style={{height: "200px", width: "200px"}}>
+                            {collectableObj['item']["rarity"] == 1 &&
+                                <Avatar onClick={handleOpen} style={common}>
+                                <img  height="100%" src={collectableObj['item']["path"]}/>
+                                </Avatar>
+                            }
+
+                            {collectableObj['item']["rarity"] == 2 &&
+                                <Avatar onClick={handleOpen} style={uncommon}>
+                                <img  height="100%" src={collectableObj['item']["path"]}/>
+                                </Avatar>
+                            }
+
+                            {collectableObj['item']["rarity"] == 3 &&
+                                <Avatar onClick={handleOpen} style={rare}>
+                                <img  height="100%" src={collectableObj['item']["path"]}/>
+                                </Avatar>
+                            }
+                    {/* <Avatar onClick={handleOpen} style={{height: "200px", width: "200px"}}>
                     <img  height="100%" src={collectableObj['item']["path"]}/>
-                    </Avatar>
+                    </Avatar> */}
                     <p>{collectableObj['item']["description"]}</p>
                     <p>{collectableObj['item']["rarity"]}</p>
                     </>
