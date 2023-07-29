@@ -37,7 +37,7 @@ function Signup() {
     try {
       const { data, error } = await supabaseClient.auth.signUp({ email, password })
       if (error) throw error
-      navigate("/");
+      navigate("/confirm-email");
     } catch (err) {
       throw err;
     } finally {
@@ -78,7 +78,7 @@ function Signup() {
                     <Form.Group>
                       <ButtonToolbar>
                         <Button appearance="primary" onClick={Login}>Sign Up</Button>
-                        <Button appearance="link">Already Have an Account? Click Here</Button>
+                        <Button appearance="link" onClick={() => { navigate("/login") }}>Already Have an Account? Click Here</Button>
                       </ButtonToolbar>
                     </Form.Group>
                   </Form>

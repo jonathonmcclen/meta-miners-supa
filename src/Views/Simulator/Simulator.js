@@ -14,6 +14,7 @@ function Simulator(){
     const [loading, setLoading] = useState(null)
     const [username, setUsername] = useState(null)
     const [ethercoin, setEthercoin] = useState(null)
+    const [maxSims, setMaxSims] = useState(0)
 
     const [secondCount, setSecondCount] = useState(0)
     const [intervalSet, setIntervalSet] = useState(false)
@@ -38,7 +39,28 @@ function Simulator(){
             setLoading(false)
         }
 
+        async function getMaxSims() {
+    
+          let { data, error } = await supabase
+            .from('profiles')
+            .select(`max_sims`)
+            .eq('id', user.id)  
+            .single() 
+     
+          if (error) {
+            console.warn(error)
+          } else if (data) {
+            setMaxSims(data['max_sims'])
+          }
+      }
+        getMaxSims()
         getSimulationsFirst()
+
+        console.log(maxSims)
+        console.log(simulations?.length)
+ 
+
+
         
       }, [])
 
@@ -53,7 +75,9 @@ function Simulator(){
       :
         <Stack wrap spacing={6}>
           {simulations?.map((sim, i) => ( <SimulationCard sim={sim}/> ))}
-          <AddSimulationCard/>
+          {maxSims && 
+            <AddSimulationCard locked={maxSims < simulations.length}/>
+          }
         </Stack>
 }
     </>

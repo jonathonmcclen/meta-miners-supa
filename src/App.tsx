@@ -15,6 +15,7 @@ import Profile from './Views/Profile';
 import Inventory from './Views/Inventory';
 import Simulator from './Views/Simulator';
 import Challenges from './Views/Challenges';
+import ConfirmEmail from './Views/ConfirmEmail';
 
 function App() {
   return (
@@ -33,10 +34,12 @@ function App() {
               />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
-              <Route path="/profile" element={<Profile />} />
-              <Route path="/inventory" element={<Inventory />} />
-              <Route path="/simulator" element={<Simulator />} />
-              <Route path="/challenges" element={<Challenges />} />
+
+              <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+              <Route path="/inventory" element={<ProtectedRoute><Inventory /></ProtectedRoute>} />
+              <Route path="/simulator" element={<ProtectedRoute><Simulator /></ProtectedRoute>} />
+              <Route path="/challenges" element={<ProtectedRoute><Challenges /></ProtectedRoute>} />
+              <Route path="/confirm-email" element={<ConfirmEmail />} />
 
               <Route
                 path="blog"

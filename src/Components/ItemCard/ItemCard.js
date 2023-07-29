@@ -1,4 +1,4 @@
-import { Avatar, AvatarGroup, Button, Modal, Tag } from "rsuite";
+import { Avatar, AvatarGroup, Button, Container, Content, Modal, Sidebar, Stack, Tag } from "rsuite";
 import UserIcon from '@rsuite/icons/legacy/User';
 import { useState } from "react";
 import { useAuth } from "../../hooks/Auth";
@@ -75,6 +75,10 @@ function ItemCard({item}){
         <Modal open={open} onClose={handleClose}>
         <Modal.Header>
         <Modal.Title> 
+            {item["items"]["name"]}
+            {" " + " " + " " + " " + " "}
+            <Tag size="lg">x{item["count"]}</Tag>
+            
             {item["items"]['rarity'] == 1 &&
             <Tag size="lg" >Common</Tag>
             }
@@ -86,36 +90,40 @@ function ItemCard({item}){
             {item["items"]['rarity'] == 3 &&
             <Tag size="lg" color="orange">Rare</Tag>
             }
-            {" " + " " + " "} {item["items"]["name"]}
-            <Tag size="lg">x{item["count"]}</Tag>
+            {" " + " " + " "}
+
+            
         </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-            {item["items"]['rarity'] == 1 &&
-                <Avatar onClick={handleOpen} style={commonLg}>
-                    <Avatar style={{width: 190, height: 190}}>
-                        <img  height="100%" src={item["items"]["path"]}/>
-                    </Avatar>
-                </Avatar>
-            }
+            <Container>
+                <Sidebar>
+                    {item["items"]['rarity'] == 1 &&
+                        <Avatar onClick={handleOpen} style={commonLg}>
+                            <Avatar style={{width: 190, height: 190}}>
+                                <img  height="100%" src={item["items"]["path"]}/>
+                            </Avatar>
+                        </Avatar>
+                    }
 
-            {item["items"]['rarity'] == 2 &&
-                <Avatar onClick={handleOpen} style={uncommonLg}>
-                    <Avatar style={{width: 190, height: 190}}>
-                        <img  height="100%" src={item["items"]["path"]}/>
-                    </Avatar>
-                </Avatar>
-            }
+                    {item["items"]['rarity'] == 2 &&
+                        <Avatar onClick={handleOpen} style={uncommonLg}>
+                            <Avatar style={{width: 190, height: 190}}>
+                                <img  height="100%" src={item["items"]["path"]}/>
+                            </Avatar>
+                        </Avatar>
+                    }
 
-            {item["items"]['rarity'] == 3 &&
-                <Avatar onClick={handleOpen} style={rareLg}>
-                    <Avatar style={{width: 190, height: 190}}>
-                        <img  height="100%" src={item["items"]["path"]}/>
-                    </Avatar>
-                </Avatar>
-            }
-        <p>{item["items"]["description"]}</p>
-
+                    {item["items"]['rarity'] == 3 &&
+                        <Avatar onClick={handleOpen} style={rareLg}>
+                            <Avatar style={{width: 190, height: 190}}>
+                                <img  height="100%" src={item["items"]["path"]}/>
+                            </Avatar>
+                        </Avatar>
+                    }
+                </Sidebar>
+                <Content><p>{item["items"]["description"]}</p></Content>
+            </Container>
         </Modal.Body>
         <Modal.Footer>
         <Button onClick={sellItem} appearance="primary">

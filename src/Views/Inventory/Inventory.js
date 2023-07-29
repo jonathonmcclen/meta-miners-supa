@@ -19,7 +19,8 @@ function Inventory() {
         .from('inventory')
         .select('*, items ( * )') 
         .eq('user_id', user.id)
-        .order('created_at', { ascending: true })
+        // .order('created_at', { ascending: true })
+        .order('rarity', { foreignTable: 'items', ascending: true })
 
           if (error) {
             console.warn(error)
@@ -33,6 +34,45 @@ function Inventory() {
         getInventroy()
       }, [])
 
+
+      async function getRarity() {
+        setLoading(true)
+        setItems([])
+  
+        let { data, error } = await supabase
+        .from('inventory')
+        .select('*, items ( * )') 
+        .eq('user_id', user.id)
+        .order('rarity', { foreignTable: 'items', ascending: true })
+
+        if (error) {
+          console.warn(error)
+        } else if (data) {
+          setItems(data)
+        }
+  
+        setLoading(false)
+      }
+
+      async function getName() {
+        setLoading(true)
+        setItems([])
+  
+        let { data, error } = await supabase
+        .from('inventory')
+        .select('*, items ( * )') 
+        .eq('user_id', user.id)
+        .order('name', { foreignTable: 'items', ascending: true })
+
+        if (error) {
+          console.warn(error)
+        } else if (data) {
+          setItems(data)
+        }
+  
+        setLoading(false)
+      }
+
     return(
     <>
 
@@ -41,8 +81,8 @@ function Inventory() {
                 <Panel>
                     <h1>Inventory</h1>
                     <Dropdown title="Sort">
-                      <Dropdown.Item>Alphabetical</Dropdown.Item>
-                      <Dropdown.Item>Rarity</Dropdown.Item>
+                      <Dropdown.Item onClick={getName}>Alphabetical</Dropdown.Item>
+                      <Dropdown.Item onClick={getRarity}>Rarity</Dropdown.Item>
                       <Dropdown.Item>Simulation Type</Dropdown.Item>
                       <Dropdown.Item>Most Recent</Dropdown.Item>
                       <Dropdown.Item>Amount</Dropdown.Item>

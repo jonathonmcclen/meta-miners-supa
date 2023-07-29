@@ -2,11 +2,10 @@ import { useState } from "react"
 import { Avatar, Panel, Modal, Button, ButtonToolbar, Placeholder, Drawer } from "rsuite"
 import NewSimModal from "../NewSimModal"
 import CreateSimForm from "../CreateSimForm";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { fas } from '@fortawesome/free-solid-svg-icons'
+import { BsLockFill } from 'react-icons/bs'
 
 
-function AddSimulationCard(){
+function AddSimulationCard({locked = false}){
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -29,9 +28,8 @@ function AddSimulationCard(){
     return(
         <>
 
-          <Panel onClick={handleOpen} style={{width: "250px", height: "390px", alignContent: "center"}} bordered>
-              <Avatar style={{width: "210px", height: "350px", fontSize: 50}}>+</Avatar>
-              <FontAwesomeIcon icon="fa-solid fa-lock" />
+          <Panel onClick={!locked && handleOpen} style={{width: "250px", height: "360px", alignContent: "center"}} bordered>
+              <Avatar style={{width: "210px", height: "320px", fontSize: 50}}>{!locked ? "+" : (<BsLockFill/>)}</Avatar>
           </Panel>
 
           <Drawer backdrop={"static"} open={open} onClose={() => setOpen(false)}>

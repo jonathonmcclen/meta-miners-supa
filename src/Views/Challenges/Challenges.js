@@ -35,7 +35,7 @@ function Challenges() {
         let { data: collection, error } = await supabaseClient
         .from('items')
         .select('*')
-        .filter('challenges', 'cs', `{"${id}"}`)
+        .filter('challenges', 'cs', `{"1"}`)
         .order('rarity', { ascending: true })
 
         setCollection(collection)

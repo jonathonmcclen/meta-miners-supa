@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Avatar, Button, ButtonGroup, Col, Drawer, Loader, Modal, Panel, Placeholder, Progress, Row, Stack } from 'rsuite';
+import { Avatar, Button, ButtonGroup, Col, Drawer, Loader, Modal, Panel, Placeholder, Progress, Row, Stack, Tag } from 'rsuite';
 import { supabaseClient } from '../../config/supabase-client';
 import { useAuth } from '../../hooks/Auth';
 import ItemDropCard from '../ItemDropCard';
@@ -177,15 +177,15 @@ function SimulationCard({sim}){
 
     return(
     <>
-        <Panel  header={sim["name"]} style={{width: "250px", height: "390px", alignContent: "center"}}  bordered>
+        <Panel  header={sim["name"]} style={{width: "250px", height: "360px", alignContent: "center"}}  bordered>
+        <p style={{fontSize: 10, color: '#636363'}}>{sim["uniq"]}</p>
             <img onClick={handleOpen} height="200px" width="200px" src={sim["sim_type"]["world_image"]} />
             { !collectable ? 
             <Progress.Line percent={percent} strokeColor={color} status={status} />
             :
             <Button onClick={invokeFunction} block appearance="primary">Collect</Button>
 }
-            <p>{sim["uniq"]}</p>
-            <p>{sim["sim_type"]["name"]}</p>
+            <Tag color="blue">{sim["sim_type"]["name"]}</Tag>
                 {/* <ButtonGroup>
                     <Button onClick={decline}>-</Button>
                     <Button onClick={increase}>+</Button>
