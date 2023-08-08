@@ -1,100 +1,158 @@
-import { Dropdown, Panel, Stack } from "rsuite"
-import ItemCard from "../../Components/ItemCard"
-import { useEffect, useState } from "react"
-import { supabaseClient as supabase } from "../../config/supabase-client"
-import { useAuth } from "../../hooks/Auth"
-
-
+import {
+  Dropdown,
+  Input,
+  InputGroup,
+  Loader,
+  Panel,
+  Progress,
+  Stack,
+} from "rsuite";
+import ItemCard from "../../Components/ItemCard";
+import { useEffect, useState } from "react";
+import { supabaseClient as supabase } from "../../config/supabase-client";
+import { useAuth } from "../../hooks/Auth";
+import ItemSlot from "../../Components/ItemSlot";
+import SearchIcon from "@rsuite/icons/Search";
 
 function Inventory() {
-    const [items, setItems] = useState([])
-    const [loading, setLoading] = useState(false)
-    const {user} = useAuth();
+  const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const { user } = useAuth();
+  const [searchTerm, setSearchTerm] = useState("");
 
-    useEffect(() => {
-        async function getInventroy() {
-          setLoading(true)
-    
-        let { data, error } = await supabase
-        .from('inventory')
-        .select('*, items ( * )') 
-        .eq('user_id', user.id)
+  useEffect(() => {
+    async function getInventroy() {
+      setLoading(true);
+
+      let { data, error } = await supabase
+        .from("inventory")
+        .select("*, items ( * )")
+        .eq("user_id", user.id)
         // .order('created_at', { ascending: true })
-        .order('rarity', { foreignTable: 'items', ascending: true })
+        .order("rarity", { foreignTable: "items", ascending: true });
 
-          if (error) {
-            console.warn(error)
-          } else if (data) {
-            setItems(data)
-          }
-    
-          setLoading(false)
-        }
-    console.log(items)
-        getInventroy()
-      }, [])
-
-
-      async function getRarity() {
-        setLoading(true)
-        setItems([])
-  
-        let { data, error } = await supabase
-        .from('inventory')
-        .select('*, items ( * )') 
-        .eq('user_id', user.id)
-        .order('rarity', { foreignTable: 'items', ascending: true })
-
-        if (error) {
-          console.warn(error)
-        } else if (data) {
-          setItems(data)
-        }
-  
-        setLoading(false)
+      if (error) {
+        console.warn(error);
+      } else if (data) {
+        setItems(data);
       }
 
-      async function getName() {
-        setLoading(true)
-        setItems([])
-  
-        let { data, error } = await supabase
-        .from('inventory')
-        .select('*, items ( * )') 
-        .eq('user_id', user.id)
-        .order('name', { foreignTable: 'items', ascending: true })
+      setLoading(false);
+    }
+    console.log(items);
+    getInventroy();
+  }, []);
 
-        if (error) {
-          console.warn(error)
-        } else if (data) {
-          setItems(data)
-        }
-  
-        setLoading(false)
-      }
+  // SEARCH
+  function returnItems(itemArr, searchTerm) {
+    const items =
+      searchTerm && searchTerm.length > 0
+        ? filterAccounts(itemArr, searchTerm)
+        : itemArr;
+    return items.sort((a, b) => {
+      return a.username.localeCompare(b.username);
+    });
+  }
 
-    return(
+  function filterAccounts(acctArr, searchTerm) {
+    const term = searchTerm.toLowerCase();
+    return acctArr.filter((account) => {
+      return (
+        account.username.toLowerCase().includes(term) ||
+        account.tags.toLowerCase().includes(term)
+      );
+    });
+  }
+
+  // function updateSearchTerm(newVal) {
+  //   startUpdating(() => {
+  //     setSearchTerm(newVal);
+  //   });
+  // }
+
+  return (
     <>
+      {!loading ? (
+        <>
+          <Stack
+            direction="column"
+            spacing={20}
+            alignItems="center"
+            style={{ marginTop: 30 }}
+          >
+            <Panel
+              shaded
+              bordered
+              bodyFill
+              style={{ display: "inline-block", maxWidth: 990, minWidth: 200 }}
+            >
+              <h1>Inventory</h1>
+              <div style={styles.container}>
+                {/* Search bar */}
+                <Input
+                  // onChange={(e) => {
+                  //   updateSearchTerm(e.target.value);
+                  // }}
+                  style={styles.input}
+                  placeholder="Search..."
+                  // Add necessary search bar props and event handlers here
+                />
 
-        <Stack direction="column" spacing={20} alignItems="center" style={{ marginTop: 30 }}>
-            <Panel shaded bordered bodyFill style={{ display: 'inline-block', maxWidth: 1000, minWidth: 1000 }}>
-                <Panel>
-                    <h1>Inventory</h1>
-                    <Dropdown title="Sort">
-                      <Dropdown.Item onClick={getName}>Alphabetical</Dropdown.Item>
-                      <Dropdown.Item onClick={getRarity}>Rarity</Dropdown.Item>
-                      <Dropdown.Item>Simulation Type</Dropdown.Item>
-                      <Dropdown.Item>Most Recent</Dropdown.Item>
-                      <Dropdown.Item>Amount</Dropdown.Item>
-                    </Dropdown>
-                    <hr/>
-                    <Stack wrap spacing={6}>
-                        {items.map((item) => ( <ItemCard item={item}/> ))}
-                    </Stack>  
-                </Panel>
+                {/* Filter dropdown */}
+                <Dropdown style={styles.dropdown} title="Sort">
+                  <Dropdown.Item>Alphabetical</Dropdown.Item>
+                  <Dropdown.Item>Rarity</Dropdown.Item>
+                  <Dropdown.Item>Simulation Type</Dropdown.Item>
+                  <Dropdown.Item>Most Recent</Dropdown.Item>
+                  <Dropdown.Item>Amount</Dropdown.Item>
+                </Dropdown>
+
+                {/* Progress bar */}
+                <Progress.Line
+                  percent={50}
+                  strokeColor="#007BFF"
+                  style={styles.progressBar}
+                />
+              </div>
+
+              <Panel>
+                <Stack wrap spacing={6}>
+                  {searchTerm
+                    ? returnItems(items, searchTerm).map((item, i) => (
+                        <ItemCard item={item} />
+                      ))
+                    : items.map((item) => <ItemCard item={item} />)}
+                </Stack>
+              </Panel>
             </Panel>
-        </Stack>
-    </>)
+          </Stack>
+        </>
+      ) : (
+        <div>
+          <Loader size="md" center content="loading" />
+        </div>
+      )}
+    </>
+  );
 }
 
-export default Inventory
+const styles = {
+  container: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    width: "100%", // Adjust the width as needed
+    margin: "10px",
+  },
+  input: {
+    width: "30%", // Adjust the width as needed
+  },
+  dropdown: {
+    width: "10%", // Adjust the width as needed
+  },
+  progressBar: {
+    width: "60%", // Adjust the width as needed
+  },
+};
+
+export default Inventory;

@@ -1,12 +1,15 @@
-import { ReactNode } from 'react';
-import MainNavigation from './MainNavigation';
+import { ReactNode, useEffect, useState } from "react";
+import MainNavigation from "./MainNavigation";
 
-function RootLayout({ children }: {children: ReactNode}) {
+
+function RootLayout({ children }: { children: ReactNode }) {
+
+
   return (
     <>
       <MainNavigation />
       <main>{children}</main>
-      </>
+    </>
   );
 }
 

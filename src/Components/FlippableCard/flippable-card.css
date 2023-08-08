@@ -1,0 +1,79 @@
+.flippable-card-container {
+    height: 445px;
+    width: 300px;
+    perspective: 1000px;
+}
+
+.card {
+    height: 100%;
+    width: 100%;
+
+    transform-style: preserve-3d;
+
+    position: relative;
+
+    border-radius: 5px;
+    
+    transition: transform 1000ms;
+}
+
+.card-front , .card-back {
+    /* Sizing */
+    height: 100%;
+    width: 100%;
+
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+
+    position: absolute;
+
+    padding: 20px;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    border-radius: 15px;
+}
+
+.card-front:hover {
+    animation: shake 0.5s;
+    animation-iteration-count: infinite;
+}
+
+.card-front{
+    background-image: url('https://nrpcmqkzpwyhpqnxkftn.supabase.co/storage/v1/object/public/mics/bResize.png?t=2023-07-31T01%3A14%3A33.827Z');
+    background-size: contain;
+    background-repeat: no-repeat;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+}
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+  }
+
+.card-back{
+    transform: rotateY(180deg);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+}
+
+.flip-exit {
+    transform: rotateY(0deg);
+}
+
+.flip-exit-active {
+    transform: rotateY(180deg);
+    transition: transform 300ms;
+}
+
+.flip-exit-done {
+    transform: rotateY(180deg);
+}
