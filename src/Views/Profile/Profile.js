@@ -137,11 +137,9 @@ function Profile() {
               Challenges
             </Button>
           </ButtonGroup>
-          <ButtonGroup>
-            <Button>Edit Profile</Button>
-            <Button>Edit Avatar</Button>
-            <SelectAvatar />
-          </ButtonGroup>
+          <Button to={"/editProfile"} as={NavLink}>
+            Edit Profile
+          </Button>
         </ButtonToolbar>
         <ButtonToolbar></ButtonToolbar>
       </Form>

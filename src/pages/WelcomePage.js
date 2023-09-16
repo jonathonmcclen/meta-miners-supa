@@ -29,8 +29,23 @@ function WelcomePage() {
   }, []);
 
   return (
-    <Stack direction="column" spacing={20} style={{ marginTop: 30 }}>
-      <h1>Welcome to META MINERS!</h1>
+    <Stack
+      direction="column"
+      spacing={20}
+      style={{ marginTop: 30, padding: "0 30px" }}
+    >
+      <div style={{ padding: "auto", backgroundColor: "#000" }}>
+        <img
+          src="https://nrpcmqkzpwyhpqnxkftn.supabase.co/storage/v1/object/public/mics/Title.png"
+          width="50%"
+          style={{
+            margin: "auto",
+            display: "block",
+            marginLeft: "auto",
+            marginRight: "auto",
+          }}
+        />
+      </div>
       <Panel
         style={{ background: "#1D202D", borderRadius: "46px" }}
         header=""
@@ -49,9 +64,7 @@ function WelcomePage() {
           <hr />
           <ol>
             <li>Create a new simulation</li>
-            <p>by defualt a free account is allowed 3 simulations</p>
-            {/* <li>Wait for civilization to form and develop</li>
-                <p></p> */}
+            <p>by default a free account is allowed 3 simulations</p>
             <li>Then your simulator will start working for you</li>
             <p>some worlds take longer to output resources than others</p>
             <li></li>

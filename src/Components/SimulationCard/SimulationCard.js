@@ -5,6 +5,7 @@ import {
   ButtonGroup,
   Col,
   Drawer,
+  Input,
   Loader,
   Modal,
   Panel,
@@ -31,6 +32,7 @@ function SimulationCard({ sim }) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const [editingName, setEditingName] = useState(false);
   //when 100% = percetn
   const [collectable, setCollectable] = useState(false);
 
@@ -89,6 +91,21 @@ function SimulationCard({ sim }) {
     getDrops();
   }, []);
 
+  async function handleUpdate() {
+    const { data, error } = await supabase
+      .from("simulations")
+      .update({ name: "otherValue" })
+      .eq("some_column", "someValue")
+      .select();
+  }
+
+  async function handleDelete() {
+    const { error } = await supabase
+      .from("simulations")
+      .delete()
+      .eq("id", "someValue");
+  }
+
   // useEffect(() =>{
 
   //     simTypes.map(item => {
@@ -145,8 +162,6 @@ function SimulationCard({ sim }) {
       setCollectableObj(obj);
       handleOpenModal();
       console.log(collectableObj);
-
-      // setTimeout(window.location.reload(), 5000) //! instead have it retunr iten and auto open modal to show new item + sound effect
     } else {
       setPercent(Math.floor((difMins / sim["sim_type"]["gestation"]) * 100));
       handleOpen();
@@ -164,25 +179,6 @@ function SimulationCard({ sim }) {
   //     }
   //     )
   // }
-
-  // const invokeFunction = async () => {
-  //     fetch('https://nrpcmqkzpwyhpqnxkftn.supabase.co/functions/v1/roll-for-item', {
-  //         method: 'POST',
-  //         headers: {
-  //             // 'Accept': 'application/json',
-  //             'Content-Type': 'application/json',
-  //             'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5ycGNtcWt6cHd5aHBxbnhrZnRuIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODg3ODEwODUsImV4cCI6MjAwNDM1NzA4NX0.2cENQpuc3wG0Z5lO7U5CCRFNV2NDtxFrI10tR1bXGVk'
-  //         },
-  //         body: JSON.stringify(
-  //             {
-  //                 "planet_id": sim['id'],
-  //                 "user_id": "8275a7a6-5a5a-4893-b3f6-3f2580420750"
-  //             }
-  //         )
-  //         })
-  //         .then(response => response.json())
-  //         .then(response => console.log(JSON.stringify(response)))
-  // };
 
   const status = percent === 100 ? "success" : null;
   const color = percent === 100 ? "#52c41a" : "#3385ff";
@@ -271,7 +267,22 @@ function SimulationCard({ sim }) {
       <Drawer backdrop={"true"} open={open} onClose={() => setOpen(false)}>
         <Drawer.Header>
           <Drawer.Title>
-            {sim["name"]} <MdEdit />
+            {!editingName ? (
+              <>
+                {sim["name"]} <MdEdit onClick={setEditingName} />
+              </>
+            ) : (
+              <>
+                <Stack gap={10}>
+                  <Input
+                    placeholder="Simulator Name"
+                    style={{ width: "300px" }}
+                    value={sim["name"]}
+                  />
+                  <Button onClick={setEditingName}>SAVE</Button>
+                </Stack>
+              </>
+            )}
           </Drawer.Title>
 
           <Drawer.Actions></Drawer.Actions>
@@ -337,6 +348,8 @@ function SimulationCard({ sim }) {
         >
           {collectableObj ? (
             <>
+              {collectableObj["already_exists"] && <h4>NEW ITEM!</h4>}
+
               <FlippableCard item={collectableObj} />
             </>
           ) : (

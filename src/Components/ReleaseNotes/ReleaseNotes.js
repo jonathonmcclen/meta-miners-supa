@@ -4,7 +4,7 @@ function ReleaseNotes({ header, content }) {
       <div
         style={{
           borderRadius: "0px 20px 0px 0px",
-          width: "800px",
+          width: "100%",
           background: "#7940CF",
           padding: "20px",
           margin: "0",
@@ -13,7 +13,7 @@ function ReleaseNotes({ header, content }) {
       <div
         style={{
           borderRadius: "0px 0px 0px 20px",
-          width: "800px",
+          width: "100%",
           background: "#1D202D",
           padding: "20px",
         }}

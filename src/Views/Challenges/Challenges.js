@@ -97,59 +97,56 @@ function Challenges() {
       {challenges ? (
         <>
           <h1>Challenges</h1>
+          <Stack style={{ overflowX: "scroll" }}>
+            {challenges?.map((challenge, i) => (
+              <>
+                <Stack
+                  direction="row"
+                  spacing={0}
+                  alignItems="center"
+                  style={{ margin: 0 }}
+                >
+                  {/* Body */}
+                  <div style={{ height: "100%" }}>
+                    <Panel
+                      onClick={(event) => getCollection(challenge["id"])}
+                      style={{
+                        background: "#1D202D",
+                        borderRadius: "46px",
+                        maxWidth: "1800px",
+                        minWidth: "300px",
+                        margin: "20px",
+                        minHeight: "500px",
+                      }}
+                      shaded
+                    >
+                      <img
+                        height={100}
+                        style={{
+                          display: "block",
+                          marginLeft: "auto",
+                          marginRight: "auto",
+                        }}
+                        src={challenge["badge"]}
+                      />
+                      <br />
+                      <h5>{challenge["name"]}</h5>
+                      <hr />
+                      <p>{challenge["description"]}</p>
+                    </Panel>
+                  </div>
+                </Stack>
 
-          {challenges?.map((challenge, i) => (
-            <>
-              <Stack
-                direction="row"
-                spacing={0}
-                alignItems="center"
-                style={{ margin: 0 }}
-              >
-                {/* Body */}
-                <div style={{}}>
-                  <Panel
-                    onClick={(event) => getCollection(challenge["id"])}
-                    style={{
-                      background: "#1D202D",
-                      borderRadius: "46px",
-                      maxWidth: "1800px",
-                      margin: "20px",
-                    }}
-                    header={
-                      challenge["name"] + " | " + challenge["description"]
-                    }
-                    shaded
-                  >
-                    <img height={100} src={challenge["badge"]} />
-                    <h4>{challenge["name"]}</h4>
-                    <p>{challenge["description"]}</p>
-                    <hr />
-                    <p>
-                      First, welcome miner! I know your itching to get started
-                      mining, simulating fantastical worlds and mining them for
-                      collectible resources. META MINERS is a idle mining
-                      platform. Feel free to go about your business while your
-                      set up simulators produce resources every 20-30 minutes.
-                      as you colect items/resources you can choose to sell them
-                      for eC {"("} eatherCoin {")"}. eC be used to buy resources
-                      from other MINERS as well as purchase more simulation
-                      types for a chance of higher rarity drops. The choice is
-                      yours!
-                    </p>
-                  </Panel>
-                </div>
-              </Stack>
-
-              {/* <Panel
+                {/* <Panel
                 onClick={(event) => getCollection(challenge["id"])}
                 value={challenge["id"]}
                 header={challenge["name"] + " | " + challenge["description"]}
               >
                 <img height={100} src={challenge["badge"]} />
               </Panel> */}
-            </>
-          ))}
+              </>
+            ))}
+          </Stack>
 
           {/* DRAWER */}
           <Drawer open={open} onClose={() => setOpen(false)}>

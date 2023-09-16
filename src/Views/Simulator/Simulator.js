@@ -75,12 +75,12 @@ function Simulator() {
       ) : (
         <div
           style={{
-            // backgroundImage: `url("https://nrpcmqkzpwyhpqnxkftn.supabase.co/storage/v1/object/public/space/johnny2by2_simple_space_background_4k_resalution_mostly_black_s_bd7b1992-fb24-4fa3-87f2-74dcfe846afc%20(1).png?t=2023-08-05T21%3A56%3A29.480Z")`,
-            minHeight: "1000px",
+            backgroundImage: `url("https://nrpcmqkzpwyhpqnxkftn.supabase.co/storage/v1/object/public/space/wallpaperflare.com_wallpaper%20(1).jpg?t=2023-08-11T05%3A38%3A41.489Z")`,
             backgroundAttachment: "fixed",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
+            minHeight: "87vh",
           }}
         >
           <Stack wrap spacing={35}>

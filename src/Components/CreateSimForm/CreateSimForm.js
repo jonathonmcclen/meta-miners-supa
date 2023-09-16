@@ -2,6 +2,7 @@ import {
   Avatar,
   Button,
   Form,
+  Input,
   Panel,
   Placeholder,
   SelectPicker,
@@ -124,9 +125,9 @@ function CreateSimForm() {
         </Form.Group>
         <Form.Group>
           <Form.ControlLabel htmlFor="name">Name</Form.ControlLabel>
-          <Form.Control
+          <Input
             onChange={setName}
-            style={{ width: "285%" }}
+            style={{ width: "100%" }}
             id="name"
             type="text"
             value={name}
