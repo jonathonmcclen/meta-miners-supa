@@ -83,14 +83,17 @@ function Simulator() {
             minHeight: "87vh",
           }}
         >
-          <Stack wrap spacing={35}>
+          <div
+            comp-category="Layout"
+            class="grid relative grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-1"
+          >
             {simulations?.map((sim, i) => (
               <SimulationCard sim={sim} />
             ))}
             {maxSims && (
               <AddSimulationCard locked={maxSims < simulations.length} />
             )}
-          </Stack>
+          </div>
         </div>
       )}
     </>

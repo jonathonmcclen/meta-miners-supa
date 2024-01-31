@@ -186,11 +186,9 @@ function SimulationCard({ sim }) {
   return (
     <>
       <Panel
-        className="planet"
+        className="planet w-full h-96"
         bordered
         style={{
-          width: "246px",
-          height: "330px",
           alignContent: "center",
           position: "relative",
           padding: "-100px",
@@ -244,6 +242,7 @@ function SimulationCard({ sim }) {
           <Button
             onClick={invokeFunction}
             block
+            className="w-full h-96"
             style={{
               backgroundColor: "rgba(63, 231, 49, 0.60)",
               backdropFilter: "blur(2px)",
@@ -255,7 +254,6 @@ function SimulationCard({ sim }) {
               marginRight: 10,
               left: 0,
               top: 0,
-              height: "330px",
             }}
           >
             Collect

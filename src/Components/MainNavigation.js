@@ -83,7 +83,7 @@ function MainNavigation() {
                 {/* <p>{user?.email}</p> */}
                 {currentUser && (
                   <div style={{ backgroundColor: `#${currentUser["bg"]}` }}>
-                    <img src={currentUser?.avatars.path} height="40px" />
+                    <img className="h-[40px]" src={currentUser?.avatars.path} />
                   </div>
                 )}
               </Nav.Item>
