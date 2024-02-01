@@ -61,12 +61,17 @@ function Simulator() {
 
   return (
     <>
-      <div style={{ backgroundColor: "black", height: "70px" }}>
-        <Button>Collect All</Button>
-        <Button>Quick Collect</Button>
-        <Button>
-          <Gear />
-        </Button>
+      <div className="bg-black-500 grid grid-cols-2 px-7 py-2">
+        <div className="grid-col w-full">
+          <Button>Collect All</Button>
+          <Button>Quick Collect</Button>
+          <Button>
+            <Gear />
+          </Button>
+        </div>
+        <div className="grid-col w-full">
+          <Button>SORT</Button>
+        </div>
       </div>
       {loading ? (
         <div>

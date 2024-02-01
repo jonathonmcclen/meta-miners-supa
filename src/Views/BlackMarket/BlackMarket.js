@@ -16,28 +16,24 @@ function BlackMarket() {
   const [openShow, setOpenShow] = useState(false);
   return (
     <>
-      <div style={styles.container}>
-        {/* Search bar */}
-        <Input
-          // onChange={(e) => {
-          //   updateSearchTerm(e.target.value);
-          // }}
-          style={styles.input}
-          placeholder="Search..."
-          // Add necessary search bar props and event handlers here
-        />
-
-        {/* Filter dropdown */}
-        <Dropdown style={styles.dropdown} title="Sort">
-          <Dropdown.Item>Alphabetical</Dropdown.Item>
-          <Dropdown.Item>Rarity</Dropdown.Item>
-          <Dropdown.Item>Simulation Type</Dropdown.Item>
-          <Dropdown.Item>Most Recent</Dropdown.Item>
-          <Dropdown.Item>Amount</Dropdown.Item>
-        </Dropdown>
-
-        {/* Progress bar */}
-        <Button appearance="primary"> + Post</Button>
+      <div className="bg-black-500 grid grid-cols-2 px-7 py-2">
+        <div className="grid-col w-full">
+          {" "}
+          <Input
+            // onChange={(e) => {
+            //   updateSearchTerm(e.target.value);
+            // }}
+            className="w-10"
+            placeholder="Search..."
+            // Add necessary search bar props and event handlers here
+          />
+        </div>
+        <div className="grid-col w-full">
+          <Button className="self-end mx-auto" appearance="primary">
+            {" "}
+            + Post
+          </Button>
+        </div>
       </div>
       <Stack
         direction="column"
@@ -112,24 +108,5 @@ function BlackMarket() {
     </>
   );
 }
-
-const styles = {
-  container: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    width: "100%", // Adjust the width as needed
-    margin: "10px",
-  },
-  input: {
-    width: "30%", // Adjust the width as needed
-  },
-  dropdown: {
-    width: "10%", // Adjust the width as needed
-  },
-  progressBar: {
-    width: "60%", // Adjust the width as needed
-  },
-};
 
 export default BlackMarket;

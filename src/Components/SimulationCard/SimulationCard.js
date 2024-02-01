@@ -244,8 +244,12 @@ function SimulationCard({ sim }) {
             block
             className="w-full h-96"
             style={{
-              backgroundColor: "rgba(63, 231, 49, 0.60)",
-              backdropFilter: "blur(2px)",
+              backgroundColor: "rgba(63, 231, 49, 0.10)",
+              color: "rgba(63, 231, 49, 1)",
+              textDecoration: "underline",
+              textDecorationColor: "rgba(255,255,255,1)",
+              textUnderlineOffset: "9px",
+              backdropFilter: "blur(3px)",
               letterSpacing: "5px",
               fontWeight: "3px",
               textTransform: "uppercase",
