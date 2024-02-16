@@ -13,6 +13,7 @@ import { supabaseClient as supabase } from "../../config/supabase-client";
 import { useAuth } from "../../hooks/Auth";
 import ItemSlot from "../../Components/ItemSlot";
 import SearchIcon from "@rsuite/icons/Search";
+import SifiCard from "../../Components/SifiCard";
 
 function Inventory() {
   const [items, setItems] = useState([]);
@@ -80,13 +81,7 @@ function Inventory() {
             alignItems="center"
             style={{ marginTop: 30 }}
           >
-            <Panel
-              shaded
-              bordered
-              bodyFill
-              style={{ display: "inline-block", maxWidth: 990, minWidth: 200 }}
-            >
-              <h1>Inventory</h1>
+            <SifiCard title={"Inventory"}>
               <div style={styles.container}>
                 {/* Search bar */}
                 <Input
@@ -124,7 +119,7 @@ function Inventory() {
                     : items.map((item) => <ItemCard item={item} />)}
                 </Stack>
               </Panel>
-            </Panel>
+            </SifiCard>
           </Stack>
         </>
       ) : (

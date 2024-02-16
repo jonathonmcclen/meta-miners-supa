@@ -20,6 +20,7 @@ import { useEffect, useState } from "react";
 import { supabaseClient as supabase } from "./config/supabase-client";
 import BlackMarket from "./Views/BlackMarket";
 import EditProfile from "./Views/EditProfile";
+import Splash from "./Views/Splash";
 
 function App() {
   return (
@@ -32,7 +33,7 @@ function App() {
                 path="/"
                 element={
                   <ProtectedRoute>
-                    <WelcomePage />
+                    <Splash />
                   </ProtectedRoute>
                 }
               />
@@ -88,6 +89,7 @@ function App() {
                 }
               />
               <Route path="/confirm-email" element={<ConfirmEmail />} />
+              <Route path="/releases" element={<WelcomePage />} />
 
               <Route
                 path="blog"

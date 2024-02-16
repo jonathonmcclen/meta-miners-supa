@@ -2,6 +2,7 @@ import { Panel, Placeholder, Stack } from "rsuite";
 import ReleaseNotes from "../Components/ReleaseNotes";
 import { useEffect, useState } from "react";
 import { supabaseClient as supabase } from "../config/supabase-client";
+import SifiCard from "../Components/SifiCard";
 
 function WelcomePage() {
   const [loading, setLoading] = useState(false);
@@ -46,12 +47,7 @@ function WelcomePage() {
           }}
         />
       </div>
-      <Panel
-        style={{ background: "#1D202D", borderRadius: "46px" }}
-        header=""
-        shaded
-      >
-        <h2>Getting Started</h2>
+      <SifiCard title={"Getting Started"}>
         <p>
           First, welcome miner! I know your itching to get started mining,
           simulating fantastical worlds and mining them for collectible
@@ -70,7 +66,7 @@ function WelcomePage() {
             <li></li>
           </ol>
         </p>
-      </Panel>
+      </SifiCard>
       {releases.map((note) => (
         <ReleaseNotes header={note["header"]} content={note["content"]} />
       ))}

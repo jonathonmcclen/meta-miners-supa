@@ -8,6 +8,8 @@ import { useAuth } from "../../hooks/Auth";
 import SpaceTravelFast from "../../Components/SpaceTravelFast";
 import "./simulator.css";
 import { Gear, AddOutline } from "@rsuite/icons";
+import SifiCard from "../../Components/SifiCard";
+import SifiRandom from "../../Components/SifiRandom";
 
 function Simulator() {
   const [simulations, setSimulations] = useState(null);
@@ -88,16 +90,27 @@ function Simulator() {
             minHeight: "87vh",
           }}
         >
-          <div
-            comp-category="Layout"
-            class="grid relative grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-1"
-          >
-            {simulations?.map((sim, i) => (
-              <SimulationCard sim={sim} />
-            ))}
-            {maxSims && (
-              <AddSimulationCard locked={maxSims < simulations.length} />
-            )}
+          <div className="flex flex-wrap relative">
+            <div className="w-full sm:w-1/3">
+              <SifiCard title={"Simulator"}>
+                <p>.Sims</p>
+                <p>.Viva</p>
+              </SifiCard>
+              <SifiRandom length={10} chars={"--- "} delay={1000} />
+            </div>
+            <div className="w-full sm:w-2/3">
+              <div
+                comp-category="Layout"
+                class="grid relative grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-1"
+              >
+                {simulations?.map((sim, i) => (
+                  <SimulationCard sim={sim} />
+                ))}
+                {maxSims && (
+                  <AddSimulationCard locked={maxSims < simulations.length} />
+                )}
+              </div>
+            </div>
           </div>
         </div>
       )}

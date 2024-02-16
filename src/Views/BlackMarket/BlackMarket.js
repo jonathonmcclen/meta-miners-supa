@@ -10,15 +10,17 @@ import {
   Stack,
 } from "rsuite";
 import FlippableCard from "../../Components/FlippableCard";
+import SifiCard from "../../Components/SifiCard";
+import SifiCard2 from "../../Components/SifiCard2";
 
 function BlackMarket() {
   const [openCreate, setOpenCreate] = useState(false);
   const [openShow, setOpenShow] = useState(false);
   return (
     <>
+      <SifiCard />
       <div className="bg-black-500 grid grid-cols-2 px-7 py-2">
         <div className="grid-col w-full">
-          {" "}
           <Input
             // onChange={(e) => {
             //   updateSearchTerm(e.target.value);
@@ -42,69 +44,94 @@ function BlackMarket() {
         style={{ marginTop: 30 }}
       >
         {/* Body */}
-        <div style={{}}>
-          <Panel
-            style={{
-              background: "#1D202D",
-              borderRadius: "46px",
-              maxWidth: "1800px",
-              margin: "20px",
-            }}
-            header=""
-            shaded
-          >
-            <h4>Getting Started</h4>
-            <hr />
-            <p>
-              First, welcome miner! I know your itching to get started mining,
-              simulating fantastical worlds and mining them for collectible
-              resources. META MINERS is a idle mining platform. Feel free to go
-              about your business while your set up simulators produce resources
-              every 20-30 minutes. as you colect items/resources you can choose
-              to sell them for eC {"("} eatherCoin {")"}. eC be used to buy
-              resources from other MINERS as well as purchase more simulation
-              types for a chance of higher rarity drops. The choice is yours!
-            </p>
-          </Panel>
-        </div>
+        <SifiCard style={{ overflow: "auto" }}>
+          <SifiCard2 header={false}>
+            <div style={{}}>
+              <h4>Looking for materials</h4>
+              <hr />
+              <p>
+                First, welcome miner! I know your itching to get started mining,
+                simulating fantastical worlds and mining them for collectible
+                resources. META MINERS is a idle mining platform. Feel free to
+                go about your business while your set up simulators produce
+                resources every 20-30 minutes. as you colect items/resources you
+                can choose to sell them for eC {"("} eatherCoin {")"}. eC be
+                used to buy resources from other MINERS as well as purchase more
+                simulation types for a chance of higher rarity drops. The choice
+                is yours!
+              </p>
+            </div>
+          </SifiCard2>{" "}
+          <SifiCard header={false}>
+            <div style={{}}>
+              <h4>Looking for materials</h4>
+              <hr />
+              <p>
+                First, welcome miner! I know your itching to get started mining,
+                simulating fantastical worlds and mining them for collectible
+                resources. META MINERS is a idle mining platform. Feel free to
+                go about your business while your set up simulators produce
+                resources every 20-30 minutes. as you colect items/resources you
+                can choose to sell them for eC {"("} eatherCoin {")"}. eC be
+                used to buy resources from other MINERS as well as purchase more
+                simulation types for a chance of higher rarity drops. The choice
+                is yours!
+              </p>
+            </div>
+          </SifiCard>{" "}
+          <SifiCard header={false}>
+            <div style={{}}>
+              <h4>Looking for materials</h4>
+              <hr />
+              <p>
+                First, welcome miner! I know your itching to get started mining,
+                simulating fantastical worlds and mining them for collectible
+                resources. META MINERS is a idle mining platform. Feel free to
+                go about your business while your set up simulators produce
+                resources every 20-30 minutes. as you colect items/resources you
+                can choose to sell them for eC {"("} eatherCoin {")"}. eC be
+                used to buy resources from other MINERS as well as purchase more
+                simulation types for a chance of higher rarity drops. The choice
+                is yours!
+              </p>
+            </div>
+          </SifiCard>
+          <SifiCard header={false}>
+            <div style={{}}>
+              <h4>Looking for materials</h4>
+              <hr />
+              <p>
+                First, welcome miner! I know your itching to get started mining,
+                simulating fantastical worlds and mining them for collectible
+                resources. META MINERS is a idle mining platform. Feel free to
+                go about your business while your set up simulators produce
+                resources every 20-30 minutes. as you colect items/resources you
+                can choose to sell them for eC {"("} eatherCoin {")"}. eC be
+                used to buy resources from other MINERS as well as purchase more
+                simulation types for a chance of higher rarity drops. The choice
+                is yours!
+              </p>
+            </div>
+          </SifiCard>
+          <SifiCard header={false}>
+            <div style={{}}>
+              <h4>Looking for materials</h4>
+              <hr />
+              <p>
+                First, welcome miner! I know your itching to get started mining,
+                simulating fantastical worlds and mining them for collectible
+                resources. META MINERS is a idle mining platform. Feel free to
+                go about your business while your set up simulators produce
+                resources every 20-30 minutes. as you colect items/resources you
+                can choose to sell them for eC {"("} eatherCoin {")"}. eC be
+                used to buy resources from other MINERS as well as purchase more
+                simulation types for a chance of higher rarity drops. The choice
+                is yours!
+              </p>
+            </div>
+          </SifiCard>
+        </SifiCard>
       </Stack>
-      {/* POST CREATE */}
-      <Drawer
-        size={"lg"}
-        backdrop={"true"}
-        open={openCreate}
-        onClose={() => setOpenCreate(false)}
-      >
-        <Drawer.Header>
-          <Drawer.Title>Create Post</Drawer.Title>
-
-          <Drawer.Actions></Drawer.Actions>
-        </Drawer.Header>
-        <Drawer.Body>
-          <Button appearance="primary" color="red" block>
-            Create
-          </Button>
-        </Drawer.Body>
-      </Drawer>
-
-      {/* POST SHOW */}
-      <Drawer
-        size={"lg"}
-        backdrop={"true"}
-        open={openShow}
-        onClose={() => setOpenShow(false)}
-      >
-        <Drawer.Header>
-          <Drawer.Title>POST NAME</Drawer.Title>
-          <Placeholder.Paragraph />
-          <Drawer.Actions></Drawer.Actions>
-        </Drawer.Header>
-        <Drawer.Body>
-          <Button appearance="primary" color="red" block>
-            Comment
-          </Button>
-        </Drawer.Body>
-      </Drawer>
     </>
   );
 }

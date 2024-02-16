@@ -12,6 +12,9 @@ import {
 import { supabaseClient } from "../../config/supabase-client";
 import ItemDropCard from "../../Components/ItemDropCard";
 import { useAuth } from "../../hooks/Auth";
+import SifiCard from "../../Components/SifiCard";
+import SifiRandom from "../../Components/SifiRandom";
+import SifiRandomLoader from "../../Components/SifiRandomLoader";
 
 function Challenges() {
   const [loading, setLoading] = useState(null);
@@ -97,6 +100,12 @@ function Challenges() {
       {challenges ? (
         <>
           <h1>Challenges</h1>
+          <SifiRandom length={10} delay={1} />
+          <div style={{ overflow: "hidden", whiteSpace: "nowrap" }}>
+            <SifiRandom length={1000} delay={1000} chars={"- "} />
+            <SifiRandom length={1000} delay={1000} chars={"- "} />
+            <SifiRandom length={1000} delay={1000} chars={" □"} />
+          </div>
           <Stack style={{ overflowX: "scroll" }}>
             {challenges?.map((challenge, i) => (
               <>
@@ -108,32 +117,32 @@ function Challenges() {
                 >
                   {/* Body */}
                   <div style={{ height: "100%" }}>
-                    <Panel
-                      onClick={(event) => getCollection(challenge["id"])}
+                    <div
                       style={{
-                        background: "#1D202D",
-                        borderRadius: "46px",
                         maxWidth: "1800px",
                         minWidth: "300px",
                         margin: "20px",
-                        minHeight: "500px",
+                        minHeight: "1000px",
                       }}
-                      shaded
+                      onClick={(event) => getCollection(challenge["id"])}
                     >
-                      <img
-                        height={100}
-                        style={{
-                          display: "block",
-                          marginLeft: "auto",
-                          marginRight: "auto",
-                        }}
-                        src={challenge["badge"]}
-                      />
-                      <br />
-                      <h5>{challenge["name"]}</h5>
-                      <hr />
-                      <p>{challenge["description"]}</p>
-                    </Panel>
+                      <SifiCard title={" "} subHeader={challenge["name"]}>
+                        <div className="py-auto">
+                          <SifiRandom length={25} delay={1000} chars={"- "} />
+                        </div>
+                        <img
+                          height={100}
+                          style={{
+                            display: "block",
+                            marginLeft: "auto",
+                            marginRight: "auto",
+                            width: "200px",
+                          }}
+                          src={challenge["badge"]}
+                        />
+                        <br />
+                      </SifiCard>
+                    </div>
                   </div>
                 </Stack>
 
@@ -147,7 +156,6 @@ function Challenges() {
               </>
             ))}
           </Stack>
-
           {/* DRAWER */}
           <Drawer open={open} onClose={() => setOpen(false)}>
             <Drawer.Header>

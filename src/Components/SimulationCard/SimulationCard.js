@@ -213,7 +213,7 @@ function SimulationCard({ sim }) {
           }}
         >
           <p>
-            <GiBurstBlob /> 100/100
+            <GiBurstBlob /> &#60;&#105;&#62;&#94; 100/100
           </p>
           <p>
             <FaUsers /> 1.6K

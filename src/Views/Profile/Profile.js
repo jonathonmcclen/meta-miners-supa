@@ -16,6 +16,7 @@ import {
 } from "rsuite";
 import SelectAvatar from "../../Components/SelectAvatar";
 import { NavLink } from "react-router-dom";
+import SifiCard from "../../Components/SifiCard";
 
 function Profile() {
   const [loading, setLoading] = useState(true);
@@ -94,11 +95,13 @@ function Profile() {
   return (
     <>
       <Form onSubmit={updateProfile} className="form-widget">
-        <h4>人{username}</h4>
+        <h4></h4>
         {avatarUrl ? (
-          <div style={{ backgroundColor: `#${bgColor}`, width: 200 }}>
-            <img src={avatarUrl} style={{ width: "100%" }} />
-          </div>
+          <SifiCard title={"人" + username}>
+            <div style={{ backgroundColor: `#${bgColor}`, width: 200 }}>
+              <img src={avatarUrl} style={{ width: "100%" }} />
+            </div>
+          </SifiCard>
         ) : (
           <Panel
             height="200px"
