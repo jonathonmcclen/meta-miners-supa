@@ -1,11 +1,11 @@
 function Splash() {
   return (
     <>
-      <div className="section">
-        <div>
+      <div className="section crt flex px-[80px]">
+        <div className="w-2/3">
           <img src="https://nrpcmqkzpwyhpqnxkftn.supabase.co/storage/v1/object/public/mics/dsadsdsfssdsd%201%20(2).png" />
         </div>
-        <div className="p-[50px] border-2 border-[#22FC37]">
+        <div className="p-[50px] w-2/3 border-2 border-[#22FC37]">
           <h1>Welcome To Meta Miners</h1>
           <p>Start Mining Today!</p>
           <p>

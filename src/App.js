@@ -29,16 +29,11 @@ function App() {
         <AuthProvider>
           <RootLayout>
             <Routes>
-              <Route
-                path="/"
-                element={
-                  <ProtectedRoute>
-                    <Splash />
-                  </ProtectedRoute>
-                }
-              />
+              <Route path="/" element={<Splash />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
+              <Route path="/confirm-email" element={<ConfirmEmail />} />
+              <Route path="/release-notes" element={<WelcomePage />} />
 
               <Route
                 path="/profile"
@@ -88,9 +83,6 @@ function App() {
                   </ProtectedRoute>
                 }
               />
-              <Route path="/confirm-email" element={<ConfirmEmail />} />
-              <Route path="/releases" element={<WelcomePage />} />
-
               <Route
                 path="blog"
                 element={

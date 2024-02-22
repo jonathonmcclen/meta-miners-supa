@@ -3,7 +3,14 @@ import { Modal, Toggle, Button, ButtonToolbar, Placeholder } from "rsuite";
 import { supabaseClient as supabase } from "../../config/supabase-client";
 import "./SifiCard.css";
 
-function SifiCard({ children, title, header = true, subHeader, number, body }) {
+function SifiCard({
+  children,
+  title,
+  header = true,
+  subHeader = <div></div>,
+  number,
+  body,
+}) {
   function makeid(length) {
     let result = "";
     const characters =

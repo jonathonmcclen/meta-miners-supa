@@ -80,16 +80,7 @@ function Simulator() {
           <Loader size="md" center content="loading" />
         </div>
       ) : (
-        <div
-          style={{
-            backgroundImage: `url("https://nrpcmqkzpwyhpqnxkftn.supabase.co/storage/v1/object/public/space/wallpaperflare.com_wallpaper%20(1).jpg?t=2023-08-11T05%3A38%3A41.489Z")`,
-            backgroundAttachment: "fixed",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "cover",
-            minHeight: "87vh",
-          }}
-        >
+        <div>
           <div className="flex flex-wrap relative">
             <div className="w-full sm:w-1/3">
               <SifiCard title={"Simulator"}>

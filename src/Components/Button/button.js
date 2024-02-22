@@ -1,7 +1,12 @@
-function Button({ title }) {
+function Button({ title, color = "#22FC37" }) {
   return (
     <>
-      <div className="bg-[#22FC37] p-[10px]">{title}</div>
+      <div
+        style={{ backgroundColor: color }}
+        className=" p-[10px] block text-black w-full"
+      >
+        {title}
+      </div>
     </>
   );
 }
