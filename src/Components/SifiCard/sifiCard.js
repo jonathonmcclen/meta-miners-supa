@@ -32,7 +32,9 @@ function SifiCard({
         <div className="card-body">
           {header && (
             <div className="sifi-header">
-              <h2>{title ? title : makeid(4)}</h2>
+              <h2 className="text-3xl uppercase">
+                {title ? title : makeid(4)}
+              </h2>
               <p>{subHeader ? subHeader : makeid(25)}</p>
             </div>
           )}
