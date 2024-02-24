@@ -23,6 +23,7 @@ function Splash() {
           src="https://nrpcmqkzpwyhpqnxkftn.supabase.co/storage/v1/object/public/mics/dsadsdsfssdsd%201%20(2).png"
         />
       </div>
+
       <div className="bg-[#13131F]">pijpij</div>
       <div className="section flex">
         <div className=" mx-auto">
