@@ -61,7 +61,7 @@ function FlippableCard({
         preload="auto"
       ></audio>
 
-      <div className="flippable-card-container">
+      <div className="flippable-card-container w-contain">
         <CSSTransition in={clicked} timeout={300} classNames="flip">
           <div className="card">
             <div id="back" className="card-back">

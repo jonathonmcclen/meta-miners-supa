@@ -97,11 +97,56 @@ function Profile() {
       <Form onSubmit={updateProfile} className="form-widget">
         <h4></h4>
         {avatarUrl ? (
-          <SifiCard title={"人" + username}>
-            <div style={{ backgroundColor: `#${bgColor}`, width: 200 }}>
-              <img src={avatarUrl} style={{ width: "100%" }} />
+          <>
+            <div className="flex">
+              <div className="w-1/3">
+                <SifiCard header={false}>
+                  <Button
+                    to={"/inventory"}
+                    as={NavLink}
+                    className="button block"
+                    type="button"
+                  >
+                    Inventory
+                  </Button>
+                  <Button
+                    to={"/simulator"}
+                    as={NavLink}
+                    className="button block"
+                    type="button"
+                  >
+                    Simulator
+                  </Button>
+                  <Button
+                    to={"/challenges"}
+                    as={NavLink}
+                    className="button block"
+                    type="button"
+                  >
+                    Challenges
+                  </Button>
+                </SifiCard>
+              </div>
+              <div className="w-2/3">
+                <SifiCard title={"人" + username}>
+                  <div style={{ backgroundColor: `#${bgColor}`, width: 200 }}>
+                    <img src={avatarUrl} style={{ width: "100%" }} />
+                  </div>
+                  <Button to={"/editProfile"} as={NavLink}>
+                    Edit Profile
+                  </Button>
+                  <Button
+                    className="button block"
+                    type="button"
+                    onClick={() => supabase.auth.signOut()}
+                  >
+                    Sign Out
+                  </Button>
+                  <h5>{ethercoin} eC</h5>
+                </SifiCard>
+              </div>
             </div>
-          </SifiCard>
+          </>
         ) : (
           <Panel
             height="200px"
@@ -112,49 +157,11 @@ function Profile() {
             style={{ display: "inline-block", minWidth: 200, minHeight: 200 }}
           ></Panel>
         )}
-        <h5>{ethercoin} eC</h5>
         <ButtonToolbar>
-          <ButtonGroup>
-            <Button
-              to={"/inventory"}
-              as={NavLink}
-              className="button block"
-              type="button"
-            >
-              Inventory
-            </Button>
-            <Button
-              to={"/simulator"}
-              as={NavLink}
-              className="button block"
-              type="button"
-            >
-              Simulator
-            </Button>
-            <Button
-              to={"/challenges"}
-              as={NavLink}
-              className="button block"
-              type="button"
-            >
-              Challenges
-            </Button>
-          </ButtonGroup>
-          <Button to={"/editProfile"} as={NavLink}>
-            Edit Profile
-          </Button>
+          <ButtonGroup></ButtonGroup>
         </ButtonToolbar>
         <ButtonToolbar></ButtonToolbar>
       </Form>
-      <div>
-        <Button
-          className="button block"
-          type="button"
-          onClick={() => supabase.auth.signOut()}
-        >
-          Sign Out
-        </Button>
-      </div>
     </>
   );
 }

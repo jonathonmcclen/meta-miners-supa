@@ -21,6 +21,9 @@ import { supabaseClient as supabase } from "./config/supabase-client";
 import BlackMarket from "./Views/BlackMarket";
 import EditProfile from "./Views/EditProfile";
 import Splash from "./Views/Splash";
+import SimulatorList from "./Views/SimulatorList";
+import About from "./Views/About";
+import Shop from "./Views/Shop";
 
 function App() {
   return (
@@ -34,6 +37,7 @@ function App() {
               <Route path="/signup" element={<Signup />} />
               <Route path="/confirm-email" element={<ConfirmEmail />} />
               <Route path="/release-notes" element={<WelcomePage />} />
+              <Route path="/about" element={<About />} />
 
               <Route
                 path="/profile"
@@ -52,10 +56,26 @@ function App() {
                 }
               />
               <Route
+                path="/shop"
+                element={
+                  <ProtectedRoute>
+                    <Shop />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
                 path="/simulator"
                 element={
                   <ProtectedRoute>
                     <Simulator />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/simulation-list"
+                element={
+                  <ProtectedRoute>
+                    <SimulatorList />
                   </ProtectedRoute>
                 }
               />

@@ -10,9 +10,9 @@ import "./simulator.css";
 import { Gear, AddOutline } from "@rsuite/icons";
 import SifiCard from "../../Components/SifiCard";
 import SifiRandom from "../../Components/SifiRandom";
-import { Link } from "react-router-dom";
+import SimulationListItem from "./SimulationListItem";
 
-function Simulator() {
+function SimulatorList() {
   const [simulations, setSimulations] = useState(null);
   const [simulator, setSimulator] = useState(null);
   const [loading, setLoading] = useState(null);
@@ -59,7 +59,7 @@ function Simulator() {
     getSimulationsFirst();
 
     console.log(maxSims);
-    console.log(simulations?.length);
+    console.log(simulations);
   }, []);
 
   return (
@@ -71,7 +71,6 @@ function Simulator() {
           <Button>
             <Gear />
           </Button>
-          <Link to="/simulation-list">LIST</Link>
         </div>
         <div className="grid-col w-full">
           <Button>SORT</Button>
@@ -92,12 +91,12 @@ function Simulator() {
               <SifiRandom length={10} chars={"--- "} delay={1000} />
             </div>
             <div className="w-full sm:w-2/3">
-              <div
-                comp-category="Layout"
-                className="grid relative grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-1"
-              >
+              <div comp-category="Layout" className="">
                 {simulations?.map((sim, i) => (
-                  <SimulationCard sim={sim} />
+                  // <div>
+                  //   {sim.name} | 0 / {sim.gestation} {sim.uniq}
+                  // </div>
+                  <SimulationListItem sim={sim} />
                 ))}
                 {maxSims && (
                   <AddSimulationCard locked={maxSims < simulations.length} />
@@ -110,4 +109,4 @@ function Simulator() {
     </>
   );
 }
-export default Simulator;
+export default SimulatorList;
