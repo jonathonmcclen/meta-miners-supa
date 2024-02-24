@@ -21,7 +21,7 @@ function Splash() {
           src="https://nrpcmqkzpwyhpqnxkftn.supabase.co/storage/v1/object/public/mics/dsadsdsfssdsd%201%20(2).png"
         />
       </div>
-      <div className="bg-[#13131F] relative top-[300px] h-[400px] align-center">
+      <div className="bg-[#13131F] relative mt-[250px] h-[400px] align-center">
         <div className="flex gap-12 w-fit mx-auto z-10">
           <div className="mx-auto">
             <img
@@ -32,8 +32,7 @@ function Splash() {
           <div className="my-auto">
             <p className="text-5xl lg:text-7xl uppercase font-black tracking-[20px]">
               <span className="text-[#FFD1B2]">Space</span> Money
-              <br /> Hits
-              Different
+              <br /> Hits Different
             </p>
           </div>
         </div>
@@ -62,7 +61,7 @@ function Splash() {
           </p>
         </div>
       </div>
-      <div className="bg-[#13131F] relative top-[300px] h-[400px] align-center">
+      <div className="bg-[#13131F]  my-[250px] h-[400px] align-center">
         <div className="flex z-10 m-[100px]">
           <div className="mx-auto">
             <img
