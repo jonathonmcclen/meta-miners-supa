@@ -10,9 +10,11 @@ function Splash() {
             to get rich?
           </h1>
           <div className="w-full text-right px-6 py-4 border-2 border-t-[#22FC37] border-r-[#22FC37] border-b-black border-l-black">
-            <p className="pt-2 font-black underline uppercase tracking-wide underline-offset-8 hover:underline-offset-[12px] hover:drop-shadow-[0_4px_21px_rgba(255,235,205,1)]  transition-all duration-300 cursor-pointer">
-              Start Mining Today!
-            </p>
+            <Link to="/login">
+              <p className="pt-2 font-black underline uppercase tracking-wide underline-offset-8 hover:underline-offset-[12px] hover:drop-shadow-[0_4px_21px_rgba(255,235,205,1)]  transition-all duration-300 cursor-pointer">
+                Start Mining Today!
+              </p>
+            </Link>
           </div>
         </div>
 
@@ -39,30 +41,13 @@ function Splash() {
         </div>
       </div>
       <div className=" w-full h-[1000px] overflow-hidden">
-        <div className=" p-[50px] border-2 border-[#22FC37]">
-          <h1 className="text-5xl">Welcome To Meta Miners</h1>
-          <p>Start Mining Today!</p>
-          <p>
-            Are you ready for an exhilarating gaming experience? Look no further
-            than "MEAT MINERS"! This free-to-play game combines the excitement
-            of mining cryptocurrency with the thrill of collecting NFTs. Immerse
-            yourself in a simulated universe, where entire planets come to life
-            as the locals pay tribute to their creator. With over 200+ items to
-            collect from 5 obscure and unique worlds, the possibilities are
-            endless. Whether you're a seasoned gamer or a work-from-home
-            superstar looking for an idle game demo, "MEAT MINERS" offers an
-            adventure like no other. Get ready to dive into a world of endless
-            possibilities and become the ultimate crypto-collecting champion!
-          </p>
-        </div>
-
         <img
           className="w-full scale-[1.5] relative top-[800px] -rotate-90"
           src="https://nrpcmqkzpwyhpqnxkftn.supabase.co/storage/v1/object/public/mics/Group%20238%20(1).png"
         />
       </div>
       <div className="section w-full max-h-[90vh] static">
-        <div className="absolute p-[50px] border-2 border-[#22FC37]">
+        <div className=" p-[50px] border-2 border-[#22FC37]">
           <h1 className="text-5xl">Welcome To Meta Miners</h1>
           <p>Start Mining Today!</p>
           <p>

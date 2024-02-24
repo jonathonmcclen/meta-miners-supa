@@ -33,6 +33,11 @@ function Login() {
     });
   }, []);
 
+  useEffect(() => {
+    console.log(email);
+    console.log(password);
+  }, [email, password]);
+
   const Login = async () => {
     setLoading(true);
     try {
@@ -60,28 +65,31 @@ function Login() {
 
   return (
     <Container>
-      <div className="absolute z-0 overflow-hidden h-[90vh]">
+      {/* <div className="absolute z-0 overflow-hidden h-[90vh]">
         <img src="https://nrpcmqkzpwyhpqnxkftn.supabase.co/storage/v1/object/public/mics/LoginPlanet.png" />
-      </div>
+      </div> */}
       <div className="z-50 center mt-[150px] mx-[5px] md:mx-[50px] lg:mx-[200px] xl:mx-[500px]">
         {!session ? (
           <>
             {/* <SifiCard title={"LOGIN"}> */}
             <Form fluid>
-              <Form.Group>
-                <Form.ControlLabel>Username or email address</Form.ControlLabel>
-                <input className="w-full h-[32px]" />
-                <Form.Control name="name" onChange={(e) => setEmail(e)} />
-              </Form.Group>
-              <Form.Group>
-                <Form.ControlLabel>Password</Form.ControlLabel>
-                <Form.Control
-                  onChange={(e) => setPassword(e)}
-                  name="password"
-                  type="password"
-                  autoComplete="off"
-                />
-              </Form.Group>
+              <label>Email</label>
+              <input
+                className="w-full h-[32px] text-black"
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
+              />
+              <label>Password</label>
+              <input
+                className="w-full h-[32px] text-black"
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
+              />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
               <Form.Group>
                 <ButtonToolbar>
                   <div onClick={Login}>
