@@ -1,11 +1,7 @@
 function Splash() {
   return (
     <>
-      <div className="section w-full max-h-[90vh] overflow-hidden static">
-        <img
-          className="h-[1000px] "
-          src="https://nrpcmqkzpwyhpqnxkftn.supabase.co/storage/v1/object/public/mics/dsadsdsfssdsd%201%20(2).png"
-        />
+      <div className="section w-full max-h-[90vh] static">
         <div className="absolute p-[50px] border-2 border-[#22FC37]">
           <h1 className="text-5xl">Welcome To Meta Miners</h1>
           <p>Start Mining Today!</p>
@@ -22,6 +18,10 @@ function Splash() {
             possibilities and become the ultimate crypto-collecting champion!
           </p>
         </div>
+        <img
+          className="max-h-[80vh] inline-block"
+          src="https://nrpcmqkzpwyhpqnxkftn.supabase.co/storage/v1/object/public/mics/dsadsdsfssdsd%201%20(2).png"
+        />
       </div>
       <div className="bg-[#13131F]">pijpij</div>
       <div className="section flex">
