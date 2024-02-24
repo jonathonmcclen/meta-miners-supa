@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import SifiCard from "../../Components/SifiCard";
 
 function Splash() {
   return (
@@ -44,7 +45,7 @@ function Splash() {
         />
       </div>
       <div className="section w-full max-h-[90vh] static">
-        <div className=" p-[50px] border-2 border-[#22FC37]">
+        <SifiCard className=" p-[50px] border-2 border-[#22FC37]">
           <h1 className="text-5xl">Welcome To Meta Miners</h1>
           <p>Start Mining Today!</p>
           <p>
@@ -59,7 +60,7 @@ function Splash() {
             adventure like no other. Get ready to dive into a world of endless
             possibilities and become the ultimate crypto-collecting champion!
           </p>
-        </div>
+        </SifiCard>
       </div>
       <div className="bg-[#13131F]  my-[250px] h-[400px] align-center">
         <div className="flex z-10 m-[100px]">
@@ -77,6 +78,12 @@ function Splash() {
             </p>
           </div>
         </div>
+      </div>
+      <div className=" w-full h-[500px] overflow-hidden">
+        <img
+          className="w-full scale-[1.5] relative top-[500px] -rotate-90"
+          src="https://nrpcmqkzpwyhpqnxkftn.supabase.co/storage/v1/object/public/mics/Group%20238%20(1).png"
+        />
       </div>
     </>
   );
