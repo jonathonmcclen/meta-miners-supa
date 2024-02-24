@@ -85,25 +85,28 @@ function Splash() {
           </div>
         </div>
       </div>
-      <div className="section w-full py-auto h-[800px] px-[400px] bg-no-repeat bg-center bg-[url(https://nrpcmqkzpwyhpqnxkftn.supabase.co/storage/v1/object/public/mics/RedPlanet.png?t=2024-02-24T03%3A43%3A19.358Z)]">
-        <div className="pt-[250px]">
-          <SifiCard title="Welcome To Meta Miners">
-            <p className="text-lg">
-              Are you ready for an exhilarating gaming experience? Look no
-              further than "MEAT MINERS"! This free-to-play game combines the
-              excitement of mining cryptocurrency with the thrill of collecting
-              NFTs. Immerse yourself in a simulated universe, where entire
-              planets come to life as the locals pay tribute to their creator.
-              With over 200+ items to collect from 5 obscure and unique worlds,
-              the possibilities are endless. Whether you're a seasoned gamer or
-              a work-from-home superstar looking for an idle game demo, "MEAT
-              MINERS" offers an adventure like no other. Get ready to dive into
-              a world of endless possibilities and become the ultimate
-              crypto-collecting champion!
-            </p>
+      {/*----------SECTION 5----------*/}
+      <div className="sect">
+        <div className="w-full py-auto h-[800px] bg-no-repeat bg-center bg-[url(https://nrpcmqkzpwyhpqnxkftn.supabase.co/storage/v1/object/public/mics/RedPlanet.png?t=2024-02-24T03%3A43%3A19.358Z)]">
+          <div className="pt-[250px] max-w-[800px] m-auto">
+            <SifiCard title="Welcome To Meta Miners">
+              <p className="text-lg">
+                Are you ready for an exhilarating gaming experience? Look no
+                further than "MEAT MINERS"! This free-to-play game combines the
+                excitement of mining cryptocurrency with the thrill of
+                collecting NFTs. Immerse yourself in a simulated universe, where
+                entire planets come to life as the locals pay tribute to their
+                creator. With over 200+ items to collect from 5 obscure and
+                unique worlds, the possibilities are endless. Whether you're a
+                seasoned gamer or a work-from-home superstar looking for an idle
+                game demo, "MEAT MINERS" offers an adventure like no other. Get
+                ready to dive into a world of endless possibilities and become
+                the ultimate crypto-collecting champion!
+              </p>
 
-            <p>Start Mining Today!</p>
-          </SifiCard>
+              <p>Start Mining Today!</p>
+            </SifiCard>
+          </div>
         </div>
       </div>
       <div className=" w-full h-[500px] overflow-hidden">
