@@ -1,13 +1,11 @@
 import { useEffect, useState } from "react";
 import {
   Avatar,
-  Button,
   ButtonGroup,
   Col,
   Drawer,
   Input,
   Loader,
-  Modal,
   Panel,
   Placeholder,
   Progress,
@@ -15,14 +13,16 @@ import {
   Stack,
   Tag,
 } from "rsuite";
-import { supabaseClient } from "../../config/supabase-client";
-import { useAuth } from "../../hooks/Auth";
-import ItemDropCard from "../ItemDropCard";
+import { useAuth } from "../../../hooks/Auth";
 import { MdEdit } from "react-icons/md";
-import FlippableCard from "../FlippableCard";
+
 import { FaUsers } from "react-icons/fa";
 import { GiMedicalPackAlt, GiBurstBlob } from "react-icons/gi";
-import "./simulation-card.css";
+import { supabaseClient } from "../../../config/supabase-client";
+import ItemDropCard from "../../../Components/ItemDropCard";
+import FlippableCard from "../../../Components/FlippableCard";
+import Modal from "../../../Components/Modal";
+import Button from "../../../Components/Button";
 
 function SimulationListItem({ sim }) {
   const [percent, setPercent] = useState(0); //progress towards collectable
@@ -106,30 +106,6 @@ function SimulationListItem({ sim }) {
       .eq("id", "someValue");
   }
 
-  // useEffect(() =>{
-
-  //     simTypes.map(item => {
-  //       if (item.value == value){
-  //         setSelected(item)
-  //       }
-  //       console.log(selected)
-  //     })
-
-  //     async function getDrops() {
-  //       let { data: possibleDrops, error } = await supabaseClient
-  //         .from('items')
-  //         .select('*')
-  //         .filter('planets', 'cs', `{"${selected['value']}"}`)
-  //         .order('rarity', { ascending: true })
-
-  //       setDrops(possibleDrops)
-  //     }
-
-  //     getDrops()
-  //     console.log(drops)
-
-  //   }, [value])
-
   const invokeFunction = async () => {
     let created_at = new Date();
     setCollectable(false);
@@ -170,101 +146,33 @@ function SimulationListItem({ sim }) {
     }
   };
 
-  //   const invokeFunction = async () => {
-  //     const { data, error } = await supabaseClient.functions.invoke('hello-world', {
-  //         body: {
-  //             planet_id: sim['id'],
-  //             user_id: user.id
-  //         }
-  //     }
-  //     )
-  // }
-
   const status = percent === 100 ? "success" : null;
   const color = percent === 100 ? "#52c41a" : "#3385ff";
 
   return (
     <>
-      <Panel
-        className="planet w-full h-96"
-        bordered
-        style={{
-          alignContent: "center",
-          position: "relative",
-          padding: "-100px",
-        }}
-      >
-        <h4>{sim["name"]}</h4>
-        <p style={{ fontSize: 10, color: "#636363" }}>{sim["uniq"]}</p>
+      <div className="flex">
         <img
+          className="inline-block"
           onClick={handleOpen}
-          height="200px"
-          width="200px"
+          height="100px"
+          width="100px"
           src={sim["sim_type"]["world_image"]}
         />
-        <div
-          style={{
-            width: 80,
-            display: "inline-block",
-            position: "absolute",
-            marginRight: 10,
-            left: 10,
-            top: 100,
-          }}
-        >
-          <p>
-            <GiBurstBlob /> &#60;&#105;&#62;&#94; 100/100
-          </p>
-          <p>
-            <FaUsers /> 1.6K
-          </p>
-          <p>
-            <GiMedicalPackAlt /> 100%
-          </p>
+        <div className="inline-block">
+          <h4>{sim["name"] + ".plnt"}</h4>
+          <p style={{ fontSize: 10, color: "#636363" }}>{sim["uniq"]}</p>
         </div>
-        <div
-          style={{
-            width: 45,
-            display: "inline-block",
-            position: "absolute",
-            marginRight: 10,
-            left: 188,
-            top: 100,
-          }}
-        >
-          <Progress.Circle
-            percent={percent}
-            strokeColor={color}
-            status={status}
-          />
+
+        <div>
+          <div>{percent} %</div>
         </div>
         {collectable && (
-          <Button
-            onClick={invokeFunction}
-            block
-            className="w-full h-96"
-            style={{
-              backgroundColor: "rgba(63, 231, 49, 0.10)",
-              color: "rgba(63, 231, 49, 1)",
-              textDecoration: "underline",
-              textDecorationColor: "rgba(255,255,255,1)",
-              textUnderlineOffset: "9px",
-              backdropFilter: "blur(3px)",
-              letterSpacing: "5px",
-              fontWeight: "3px",
-              textTransform: "uppercase",
-              display: "inline-block",
-              position: "absolute",
-              marginRight: 10,
-              left: 0,
-              top: 0,
-            }}
-          >
-            Collect
-          </Button>
+          <div onClick={invokeFunction}>
+            <Button title="COLLECT" />
+          </div>
         )}
-        {/* <Tag color="blue">{sim["sim_type"]["name"]}</Tag> */}
-      </Panel>
+      </div>
 
       <Drawer backdrop={"true"} open={open} onClose={() => setOpen(false)}>
         <Drawer.Header>
@@ -329,87 +237,35 @@ function SimulationListItem({ sim }) {
         </Drawer.Body>
       </Drawer>
 
-      <Modal
-        backdrop={"static"}
-        keyboard={false}
-        open={openCollectModal}
-        onClose={handleCloseModal}
-      >
-        <Modal.Header>
-          <Modal.Title>
-            <h4>You got a new collectable!</h4>
-          </Modal.Title>
-        </Modal.Header>
-
-        <Modal.Body
-          style={{
-            alignContent: "center",
-            textAlign: "center",
-            padding: "20px 125px",
-          }}
-        >
-          {collectableObj ? (
-            <>
-              {collectableObj["already_exists"] && <h4>NEW ITEM!</h4>}
-
+      <Modal open={openCollectModal}>
+        <h4>You got a new collectable!</h4>
+        {collectableObj ? (
+          <>
+            {collectableObj["already_exists"] && <h4>NEW ITEM!</h4>}
+            <div className="px-auto">
               <FlippableCard item={collectableObj} />
-            </>
-          ) : (
-            <div style={{ textAlign: "center" }}>
-              <Loader size="lg" />
             </div>
-          )}
-        </Modal.Body>
-        <Modal.Footer>
-          <Button onClick={handleCloseModal} appearance="primary">
-            close
-          </Button>
-          <Button onClick={handleCloseModal} appearance="subtle">
-            Go To Inventory
-          </Button>
-        </Modal.Footer>
+          </>
+        ) : (
+          <div style={{ textAlign: "center" }}>
+            {/* <Loader size="lg" /> */}
+          </div>
+        )}
+        <div>
+          <Button
+            title={"close"}
+            onClick={handleCloseModal}
+            appearance="primary"
+          />
+          <Button
+            title={"Go To Inventory"}
+            onClick={handleCloseModal}
+            appearance="subtle"
+          />
+        </div>
       </Modal>
     </>
   );
 }
-
-const styles = {
-  container: {
-    display: "inline-block",
-  },
-  slot: {
-    width: "100px",
-    height: "100px",
-    border: "2px solid #8c8c8c",
-    borderRadius: "4px",
-    position: "relative",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    fontSize: "24px",
-    fontWeight: "bold",
-    background: "#1D202D",
-    boxShadow: "2px 2px 1px 0px #000 inset",
-  },
-  item: {
-    width: "100%",
-    height: "100%",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    fontSize: "24px",
-    fontWeight: "bold",
-  },
-  count: {
-    position: "absolute",
-    bottom: "5px",
-    right: "5px",
-    background: "rgba(0, 0, 0, 0.7)",
-    color: "#fff",
-    padding: "2px 6px",
-    borderRadius: "4px",
-    fontSize: "14px",
-  },
-};
 
 export default SimulationListItem;

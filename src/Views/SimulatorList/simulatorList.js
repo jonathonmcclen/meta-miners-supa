@@ -10,6 +10,7 @@ import "./simulator.css";
 import { Gear, AddOutline } from "@rsuite/icons";
 import SifiCard from "../../Components/SifiCard";
 import SifiRandom from "../../Components/SifiRandom";
+import SimulationListItem from "./SimulationListItem";
 
 function SimulatorList() {
   const [simulations, setSimulations] = useState(null);
@@ -58,7 +59,7 @@ function SimulatorList() {
     getSimulationsFirst();
 
     console.log(maxSims);
-    console.log(simulations?.length);
+    console.log(simulations);
   }, []);
 
   return (
@@ -90,12 +91,12 @@ function SimulatorList() {
               <SifiRandom length={10} chars={"--- "} delay={1000} />
             </div>
             <div className="w-full sm:w-2/3">
-              <div
-                comp-category="Layout"
-                class="grid relative grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-1"
-              >
+              <div comp-category="Layout" className="">
                 {simulations?.map((sim, i) => (
-                  <SimulationCard sim={sim} />
+                  // <div>
+                  //   {sim.name} | 0 / {sim.gestation} {sim.uniq}
+                  // </div>
+                  <SimulationListItem sim={sim} />
                 ))}
                 {maxSims && (
                   <AddSimulationCard locked={maxSims < simulations.length} />
