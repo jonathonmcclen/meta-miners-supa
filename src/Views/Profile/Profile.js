@@ -98,8 +98,8 @@ function Profile() {
         <h4></h4>
         {avatarUrl ? (
           <>
-            <div className="flex">
-              <div className="w-1/3">
+            <div className="flex flex-wrap w-full">
+              <div className="w-full md:w-1/3">
                 <SifiCard header={false}>
                   <Button
                     to={"/inventory"}
@@ -127,7 +127,7 @@ function Profile() {
                   </Button>
                 </SifiCard>
               </div>
-              <div className="w-2/3">
+              <div className="w-full md:w-2/3">
                 <SifiCard title={"人" + username}>
                   <div style={{ backgroundColor: `#${bgColor}`, width: 200 }}>
                     <img src={avatarUrl} style={{ width: "100%" }} />
