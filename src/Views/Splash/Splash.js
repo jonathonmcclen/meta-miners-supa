@@ -26,44 +26,46 @@ function Splash() {
       </div>
 
       <div className="sect">
-        {/* <div className="bg-[#13131F]  w-full h-[400px] align-center"> */}
-        <div className="flex flex-wrap">
-          <div className="mx-auto w-full md:w-1/2">
-            <img
-              className="max-w-[350px] mt-[-150px] m-auto"
-              src="https://nrpcmqkzpwyhpqnxkftn.supabase.co/storage/v1/object/public/mics/Group%20244%20(1).png"
-            />
-          </div>
+        <div className="bg-[#13131F]  w-full h-[400px] align-center">
+          <div className="flex flex-wrap">
+            <div className="mx-auto w-full md:w-1/2">
+              <img
+                className="max-w-[350px] mt-[-150px] m-auto"
+                src="https://nrpcmqkzpwyhpqnxkftn.supabase.co/storage/v1/object/public/mics/Group%20244%20(1).png"
+              />
+            </div>
 
-          <div className="my-auto w-full md:w-1/2">
-            <p className="text-5xl lg:text-7xl uppercase font-black tracking-[20px] ">
-              <span className="text-[#FFD1B2]">Space</span> Money
-              <br /> Hits Different
-            </p>
+            <div className="my-auto w-full md:w-1/2">
+              <p className="text-5xl text-center md:text-left lg:text-7xl uppercase font-black tracking-[20px] ">
+                <span className="text-[#FFD1B2]">Space</span> Money
+                <br /> Hits Different
+              </p>
+            </div>
           </div>
         </div>
-        {/* </div> */}
       </div>
+      {/*----------SECTION 3----------*/}
+      <div className="sect">
+        <div className="w-full py-auto h-[800px] bg-no-repeat bg-center bg-[url(https://nrpcmqkzpwyhpqnxkftn.supabase.co/storage/v1/object/public/mics/RedPlanet.png?t=2024-02-24T03%3A43%3A19.358Z)]">
+          <div className="pt-[250px] max-w-[800px] m-auto">
+            <SifiCard title="Welcome To Meta Miners">
+              <p className="text-lg">
+                Are you ready for an exhilarating gaming experience? Look no
+                further than "MEAT MINERS"! This free-to-play game combines the
+                excitement of mining cryptocurrency with the thrill of
+                collecting NFTs. Immerse yourself in a simulated universe, where
+                entire planets come to life as the locals pay tribute to their
+                creator. With over 200+ items to collect from 5 obscure and
+                unique worlds, the possibilities are endless. Whether you're a
+                seasoned gamer or a work-from-home superstar looking for an idle
+                game demo, "MEAT MINERS" offers an adventure like no other. Get
+                ready to dive into a world of endless possibilities and become
+                the ultimate crypto-collecting champion!
+              </p>
 
-      <div className="section w-full py-auto h-[800px] px-[400px] bg-no-repeat bg-center bg-[url(https://nrpcmqkzpwyhpqnxkftn.supabase.co/storage/v1/object/public/mics/RedPlanet.png?t=2024-02-24T03%3A43%3A19.358Z)]">
-        <div className="pt-[250px]">
-          <SifiCard title="Welcome To Meta Miners">
-            <p className="text-lg">
-              Are you ready for an exhilarating gaming experience? Look no
-              further than "MEAT MINERS"! This free-to-play game combines the
-              excitement of mining cryptocurrency with the thrill of collecting
-              NFTs. Immerse yourself in a simulated universe, where entire
-              planets come to life as the locals pay tribute to their creator.
-              With over 200+ items to collect from 5 obscure and unique worlds,
-              the possibilities are endless. Whether you're a seasoned gamer or
-              a work-from-home superstar looking for an idle game demo, "MEAT
-              MINERS" offers an adventure like no other. Get ready to dive into
-              a world of endless possibilities and become the ultimate
-              crypto-collecting champion!
-            </p>
-
-            <p>Start Mining Today!</p>
-          </SifiCard>
+              <p>Start Mining Today!</p>
+            </SifiCard>
+          </div>
         </div>
       </div>
       <div className="bg-[#13131F]  my-[250px] h-[400px] align-center">
