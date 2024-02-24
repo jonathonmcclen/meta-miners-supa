@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 function Splash() {
   return (
     <>
-      <div className="mt-[100px] md:mt-0 section w-full overflow-hidden h-screen max-h-[90vh] flex gap-12 md:gap-0 flex-row place-items-center">
+      <div className="crt mt-[100px] md:mt-0 section w-full overflow-hidden h-screen max-h-[90vh] flex gap-12 md:gap-0 flex-row place-items-center">
         <div className="w-2/3 md:w-1/2 flex flex-col place-items-end">
           <h1 className="text-3xl md:text-5xl lg:text-7xl mb-2 uppercase font-thin tracking-widest">
             Do you want <br />
