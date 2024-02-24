@@ -57,7 +57,7 @@ function Splash() {
         </div>
 
         <img
-          className="w-full scale-[1.5] relative top-[800px] animate-spin"
+          className="w-full scale-[1.5] relative top-[800px] -rotate-90"
           src="https://nrpcmqkzpwyhpqnxkftn.supabase.co/storage/v1/object/public/mics/Group%20238%20(1).png"
         />
       </div>
