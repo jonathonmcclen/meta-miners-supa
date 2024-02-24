@@ -5,16 +5,14 @@ function Splash() {
     <>
       <div className="mt-[100px] md:mt-0 section w-full overflow-hidden h-screen max-h-[90vh] flex gap-12 md:gap-0 flex-row place-items-center">
         <div className="w-2/3 md:w-1/2 flex flex-col place-items-end">
-          <h1 className="text-3xl md:text-5xl lg:text-7xl uppercase font-thin tracking-widest">
+          <h1 className="text-3xl md:text-5xl lg:text-7xl mb-2 uppercase font-thin tracking-widest">
             Do you want <br />
             to get rich?
           </h1>
-          <div className="w-full text-right px-6 py-4 border-2 border-t-[#22FC37] border-r-[#22FC37] border-b-black border-l-black">
-            <Link to="/login">
-              <p className="pt-2 font-black underline uppercase tracking-wide underline-offset-8 hover:underline-offset-[12px] hover:drop-shadow-[0_4px_21px_rgba(255,235,205,1)]  transition-all duration-300 cursor-pointer">
-                Start Mining Today!
-              </p>
-            </Link>
+          <div className="w-full text-right px-6 py-4 border-2 border-t-[#FFD1B2] border-r-[#FFD1B2] border-b-black border-l-black after:-z-10 after:blur-sm after:h-[70px] after:w-2/3 md:after:w-1/2 after:absolute after:left-0 after:mt-[-51px] after:border-4 after:border-t-[#FFD1B2] after:border-r-[#FFD1B2] after:border-b-black after:border-l-black">
+            <p className="pt-2 font-black underline uppercase tracking-wide underline-offset-8 hover:underline-offset-[12px] hover:drop-shadow-[0_4px_21px_rgba(255,235,205,1)]  transition-all duration-300 cursor-pointer">
+              Start Mining Today!
+            </p>
           </div>
         </div>
 
@@ -24,17 +22,17 @@ function Splash() {
         />
       </div>
       <div className="bg-[#13131F] relative top-[300px] h-[400px] align-center">
-        <div className="flex z-10">
+        <div className="flex gap-12 w-fit mx-auto z-10">
           <div className="mx-auto">
             <img
               className="max-w-[350px] mt-[-150px]"
               src="https://nrpcmqkzpwyhpqnxkftn.supabase.co/storage/v1/object/public/mics/Group%20244%20(1).png"
             />
           </div>
-          <div className="p-5 mr-[20%] my-auto">
-            <p className="text-7xl uppercase font-black tracking-[20px] leading-relaxed">
+          <div className="my-auto">
+            <p className="text-5xl lg:text-7xl uppercase font-black tracking-[20px]">
               <span className="text-[#FFD1B2]">Space</span> Money
-              <br /> Hits <br />
+              <br /> Hits
               Different
             </p>
           </div>
