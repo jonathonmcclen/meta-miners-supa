@@ -151,7 +151,7 @@ function SimulationListItem({ sim }) {
 
   return (
     <>
-      <div className="flex flex-nowrap w-full">
+      <div className="flex flex-nowrap w-full w-full hover:drop-shadow-[0_4px_12px_rgba(255,235,205,.5)] hover:bg-slate-800 transition-all duration-700">
         <img
           className="inline-block"
           onClick={handleOpen}
@@ -159,17 +159,18 @@ function SimulationListItem({ sim }) {
           width="100px"
           src={sim["sim_type"]["world_image"]}
         />
-        <div className="inline-block my-auto w-[30%] max-w-[800px] no-wrap overflow-hidden pr-[80px]">
+        <div
+          onClick={handleOpen}
+          className="inline-block my-auto w-[30%] max-w-[800px] no-wrap overflow-hidden pr-[80px]"
+        >
           <h4>{sim["name"] + ".plnt"}</h4>
           <p style={{ fontSize: 10, color: "#636363" }}>{sim["uniq"]}</p>
         </div>
-
         {collectable && (
           <div className="my-auto" onClick={invokeFunction}>
             <Button title="COLLECT" />
           </div>
         )}
-
         {!collectable && (
           <div className="my-auto" onClick={invokeFunction}>
             <Button title={{ percent } + "%"} />

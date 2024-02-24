@@ -37,7 +37,7 @@ function Splash() {
             </div>
 
             <div className="my-auto w-full md:w-1/2">
-              <p className="text-5xl text-center md:text-left lg:text-7xl uppercase font-black tracking-[20px] ">
+              <p className="md:text-5xl text-4xl text-center md:text-left lg:text-7xl uppercase font-black tracking-[20px] ">
                 <span className="text-[#FFD1B2]">Space</span> Money
                 <br /> Hits Different
               </p>
@@ -63,7 +63,6 @@ function Splash() {
                 ready to dive into a world of endless possibilities and become
                 the ultimate crypto-collecting champion!
               </p>
-
               <p>Start Mining Today!</p>
             </SifiCard>
           </div>
@@ -74,7 +73,7 @@ function Splash() {
         <div className="bg-[#13131F]  w-full h-[400px] align-center">
           <div className="flex flex-wrap">
             <div className="my-auto w-full md:w-1/2">
-              <p className="text-5xl text-center md:text-right lg:text-7xl uppercase font-black tracking-[20px] ">
+              <p className="md:text-5xl text-4xl text-center md:text-right lg:text-7xl uppercase font-black tracking-[20px] ">
                 Collect
                 <br />
                 <span className="text-[#FFD1B2]">Hundreds</span>
