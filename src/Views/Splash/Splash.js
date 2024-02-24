@@ -24,22 +24,27 @@ function Splash() {
           src="https://nrpcmqkzpwyhpqnxkftn.supabase.co/storage/v1/object/public/mics/dsadsdsfssdsd%201%20(2).png"
         />
       </div>
-      <div className="bg-[#13131F] relative m-[250px] h-[400px] align-center">
-        <div className="flex gap-12 w-fit mx-auto z-10">
-          <div className="mx-auto">
+
+      <div className="sect">
+        {/* <div className="bg-[#13131F]  w-full h-[400px] align-center"> */}
+        <div className="flex flex-wrap">
+          <div className="mx-auto w-full md:w-1/2">
             <img
-              className="max-w-[350px] mt-[-150px]"
+              className="max-w-[350px] mt-[-150px] m-auto"
               src="https://nrpcmqkzpwyhpqnxkftn.supabase.co/storage/v1/object/public/mics/Group%20244%20(1).png"
             />
           </div>
-          <div className="my-auto">
-            <p className="text-5xl lg:text-7xl uppercase font-black tracking-[20px]">
+
+          <div className="my-auto w-full md:w-1/2">
+            <p className="text-5xl lg:text-7xl uppercase font-black tracking-[20px] ">
               <span className="text-[#FFD1B2]">Space</span> Money
               <br /> Hits Different
             </p>
           </div>
         </div>
+        {/* </div> */}
       </div>
+
       <div className="section w-full py-auto h-[800px] px-[400px] bg-no-repeat bg-center bg-[url(https://nrpcmqkzpwyhpqnxkftn.supabase.co/storage/v1/object/public/mics/RedPlanet.png?t=2024-02-24T03%3A43%3A19.358Z)]">
         <div className="pt-[250px]">
           <SifiCard title="Welcome To Meta Miners">
