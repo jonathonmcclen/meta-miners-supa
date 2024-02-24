@@ -73,7 +73,7 @@ function Splash() {
           <div className="mx-auto">
             <img
               className="max-w-[350px] mt-[-150px]"
-              src="https://nrpcmqkzpwyhpqnxkftn.supabase.co/storage/v1/object/public/mics/Group%20244%20(1).png"
+              src="https://nrpcmqkzpwyhpqnxkftn.supabase.co/storage/v1/object/public/mics/Spaceship2.png?t=2024-02-24T04%3A03%3A20.421Z"
             />
           </div>
         </div>
