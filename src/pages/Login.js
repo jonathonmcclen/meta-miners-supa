@@ -60,7 +60,7 @@ function Login() {
 
   return (
     <Container>
-      <div className="absolute z-0 overflow-hidden h-[50vh]">
+      <div className="absolute z-0 overflow-hidden h-[90vh]">
         <img src="https://nrpcmqkzpwyhpqnxkftn.supabase.co/storage/v1/object/public/mics/LoginPlanet.png" />
       </div>
       <div className="z-50 center mt-[150px] mx-[5px] md:mx-[50px] lg:mx-[200px] xl:mx-[500px]">

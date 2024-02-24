@@ -1,12 +1,12 @@
 function Splash() {
   return (
     <>
-      <div className="section crt flex px-[80px]">
+      <div className="section flex px-[80px]">
         <div className="w-2/3">
           <img src="https://nrpcmqkzpwyhpqnxkftn.supabase.co/storage/v1/object/public/mics/dsadsdsfssdsd%201%20(2).png" />
         </div>
         <div className="p-[50px] w-2/3 border-2 border-[#22FC37]">
-          <h1>Welcome To Meta Miners</h1>
+          <h1 className="text-[200px]">Welcome To Meta Miners</h1>
           <p>Start Mining Today!</p>
           <p>
             Are you ready for an exhilarating gaming experience? Look no further
@@ -22,6 +22,28 @@ function Splash() {
           </p>
         </div>
       </div>
+      <div className="section flex">
+        <div className="w-1/3">
+          <img src="https://nrpcmqkzpwyhpqnxkftn.supabase.co/storage/v1/object/public/mics/Group%20244.png" />
+        </div>
+        <div className="p-[50px] w-2/3 border-2 border-[#22FC37]">
+          <h1 className="text-[200px]">Welcome To Meta Miners</h1>
+          <p>Start Mining Today!</p>
+          <p>
+            Are you ready for an exhilarating gaming experience? Look no further
+            than "MEAT MINERS"! This free-to-play game combines the excitement
+            of mining cryptocurrency with the thrill of collecting NFTs. Immerse
+            yourself in a simulated universe, where entire planets come to life
+            as the locals pay tribute to their creator. With over 200+ items to
+            collect from 5 obscure and unique worlds, the possibilities are
+            endless. Whether you're a seasoned gamer or a work-from-home
+            superstar looking for an idle game demo, "MEAT MINERS" offers an
+            adventure like no other. Get ready to dive into a world of endless
+            possibilities and become the ultimate crypto-collecting champion!
+          </p>
+        </div>
+      </div>
+      <div></div>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="1728"
