@@ -42,7 +42,9 @@ function Header2() {
       <div className="bg-[#000] noselect ">
         <div className="ml-[20px] tracking-widest">
           <div className=" inline-block px-[20px] h-[80px] text-[#22FC37] items-center">
-            <p className="mt-[30px]  text-4xl font-thin">SIMULATION MINERS</p>
+            <link to="/">
+              <p className="mt-[30px]  text-4xl font-thin">SIMULATION MINERS</p>
+            </link>
           </div>
           <Link to="/simulator">
             <div className="inline-block px-[20px] h-[80px] hover:text-[#22FC37] items-center hover:underline underline-offset-8">
