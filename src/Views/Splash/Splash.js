@@ -4,6 +4,7 @@ import SifiCard from "../../Components/SifiCard";
 function Splash() {
   return (
     <>
+      {/*----------SECTION 1----------*/}
       <div className="crt mt-[100px] md:mt-0 section w-full overflow-hidden h-screen max-h-[90vh] flex gap-12 md:gap-0 flex-row place-items-center">
         <div className="w-2/3 md:w-1/2 flex flex-col place-items-end">
           <h1 className="text-3xl md:text-5xl lg:text-7xl mb-2 uppercase font-thin tracking-widest">
@@ -24,9 +25,9 @@ function Splash() {
           src="https://nrpcmqkzpwyhpqnxkftn.supabase.co/storage/v1/object/public/mics/dsadsdsfssdsd%201%20(2).png"
         />
       </div>
-
-      <div className="sect">
-        <div className="bg-[#13131F]  w-full h-[400px] align-center">
+      {/*----------SECTION 2----------*/}
+      <div className="sect pb-[400px] md:py-[250px]">
+        <div className="bg-[#13131F] w-full h-[400px] align-center">
           <div className="flex flex-wrap">
             <div className="mx-auto w-full md:w-1/2">
               <img
@@ -47,7 +48,7 @@ function Splash() {
       {/*----------SECTION 3----------*/}
       <div className="sect">
         <div className="w-full py-auto h-[800px] bg-no-repeat bg-center bg-[url(https://nrpcmqkzpwyhpqnxkftn.supabase.co/storage/v1/object/public/mics/RedPlanet.png?t=2024-02-24T03%3A43%3A19.358Z)]">
-          <div className="pt-[250px] max-w-[800px] m-auto">
+          <div className="pt-[180px] md:pt-[250px] max-w-[800px] m-auto">
             <SifiCard title="Welcome To Meta Miners">
               <p className="text-lg">
                 Are you ready for an exhilarating gaming experience? Look no
@@ -68,8 +69,8 @@ function Splash() {
           </div>
         </div>
       </div>
-      {/*----------SECTION 5----------*/}
-      <div className="sect">
+      {/*----------SECTION 4----------*/}
+      <div className="sect pb-[400px] md:py-[250px]">
         <div className="bg-[#13131F]  w-full h-[400px] align-center">
           <div className="flex flex-wrap">
             <div className="my-auto w-full md:w-1/2">
