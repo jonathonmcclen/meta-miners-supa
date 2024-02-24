@@ -7,6 +7,7 @@ import NewsScroller from "../NewsScroller";
 import { TbMoneybag } from "react-icons/tb";
 import { supabaseClient as supabase } from "../../config/supabase-client";
 import Avatar from "../Avatar";
+import NavItem from "../NavItem";
 
 function Header2() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -46,22 +47,9 @@ function Header2() {
               <p className="mt-[30px]  text-4xl font-thin">SIMULATION MINERS</p>
             </Link>
           </div>
-          <Link to="/simulator">
-            <div className="inline-block px-[20px] h-[80px] hover:text-[#22FC37] items-center hover:underline underline-offset-8">
-              <p className="mt-[30px] ">SIMULATOR</p>
-            </div>
-          </Link>
-          <Link to="/shop">
-            <div className="inline-block px-[20px] h-[80px] hover:text-[#22FC37] items-center hover:underline underline-offset-8">
-              <p className="mt-[30px]">SHOP</p>
-            </div>
-          </Link>
-          <Link to="/black-market">
-            <div className="inline-block px-[20px] h-[80px] hover:text-[#22FC37] items-center hover:underline underline-offset-8">
-              <p className="mt-[30px]">BLACK MARKET</p>
-            </div>
-          </Link>
-
+          <NavItem title="SIMULATOR" link="/simulator" />{" "}
+          <NavItem title="SHOP" link="/shop" />
+          <NavItem title="BLACK MARKET" link="/black-market" />
           <Link to="/profile">
             <div className="inline-block px-[20px] h-[80px] hover:text-[#22FC37] float-right">
               {currentUser && (

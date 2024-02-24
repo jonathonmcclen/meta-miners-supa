@@ -21,6 +21,7 @@ import { supabaseClient as supabase } from "./config/supabase-client";
 import BlackMarket from "./Views/BlackMarket";
 import EditProfile from "./Views/EditProfile";
 import Splash from "./Views/Splash";
+import SimulatorList from "./Views/SimulatorList";
 
 function App() {
   return (
@@ -56,6 +57,14 @@ function App() {
                 element={
                   <ProtectedRoute>
                     <Simulator />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/simulation-list"
+                element={
+                  <ProtectedRoute>
+                    <SimulatorList />
                   </ProtectedRoute>
                 }
               />

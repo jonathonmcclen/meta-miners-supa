@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import Button from "../Button";
+import NavItem from "../NavItem";
 
 function Header1() {
   return (
@@ -11,21 +12,9 @@ function Header1() {
               <p className="mt-[30px]  text-4xl font-thin">SIMULATION MINERS</p>
             </Link>
           </div>
-          <Link to="/">
-            <div className="inline-block px-[20px] h-[80px] hover:text-[#FFD1B2] items-center hover:underline underline-offset-8">
-              <p className="mt-[30px] ">HOME</p>
-            </div>
-          </Link>
-          <Link to="/about">
-            <div className="inline-block px-[20px] h-[80px] hover:text-[#FFD1B2] items-center hover:underline underline-offset-8">
-              <p className="mt-[30px]">ABOUT</p>
-            </div>
-          </Link>
-          <Link to="/release-notes">
-            <div className="inline-block px-[20px] h-[80px] hover:text-[#FFD1B2] items-center hover:underline underline-offset-8">
-              <p className="mt-[30px]">RELEASE NOTES</p>
-            </div>
-          </Link>
+          <NavItem title="HOME" link="/" />
+          <NavItem title="ABOUT" link="/about" />
+          <NavItem title="RELEASE NOTES" link="/release-notes" />
           <Link to="/login">
             <div className="inline-block px-[20px] h-[80px] ">
               <Button title={"LOGIN / REGISTER"} />

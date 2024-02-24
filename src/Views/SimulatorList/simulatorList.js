@@ -10,9 +10,8 @@ import "./simulator.css";
 import { Gear, AddOutline } from "@rsuite/icons";
 import SifiCard from "../../Components/SifiCard";
 import SifiRandom from "../../Components/SifiRandom";
-import { Link } from "react-router-dom";
 
-function Simulator() {
+function SimulatorList() {
   const [simulations, setSimulations] = useState(null);
   const [simulator, setSimulator] = useState(null);
   const [loading, setLoading] = useState(null);
@@ -71,7 +70,6 @@ function Simulator() {
           <Button>
             <Gear />
           </Button>
-          <Link to="/simulation-list">LIST</Link>
         </div>
         <div className="grid-col w-full">
           <Button>SORT</Button>
@@ -110,4 +108,4 @@ function Simulator() {
     </>
   );
 }
-export default Simulator;
+export default SimulatorList;
