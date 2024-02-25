@@ -140,6 +140,16 @@ function Header2() {
             onClick={handleSignOut}
             className="w-full px-[20%] h-[80px] mx-auto text-center"
           >
+            {currentUser && (
+              <div className="mt-[30px]">
+                <Avatar
+                  title={currentUser?.username}
+                  subTitle={currentUser?.ethercoin.toLocaleString() + " eC"}
+                  img={currentUser?.avatars.path}
+                  bgColor={`#${currentUser["bg"]}`}
+                />
+              </div>
+            )}
             <div className="mt-[30px]">
               <Button title={"LOGOUT"} color="#ffc700" />
             </div>

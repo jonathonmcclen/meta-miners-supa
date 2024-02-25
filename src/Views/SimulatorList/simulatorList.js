@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 // import AddSimulationCard from "../../Components/AddSimulationCard";
 import SimulationCard from "../../Components/SimulationCard";
+import { BsListColumnsReverse } from "react-icons/bs";
+
 import { supabaseClient as supabase } from "../../config/supabase-client";
 import { Loader, Stack } from "rsuite";
 import AddSimulationCard from "../../Components/AddSimulationCard";
@@ -12,6 +14,8 @@ import SifiCard from "../../Components/SifiCard";
 import SifiRandom from "../../Components/SifiRandom";
 import SimulationListItem from "./SimulationListItem";
 import Button1 from "../../Components/Button1";
+import { Link } from "react-router-dom";
+import { BiDotsHorizontalRounded } from "react-icons/bi";
 
 function SimulatorList() {
   const [simulations, setSimulations] = useState(null);
@@ -73,6 +77,12 @@ function SimulatorList() {
               <Gear />
             </Button1>
             <Button1>SORT</Button1>
+            <div className="inline-block float-right">
+              <Link to="/simulator">
+                <BsListColumnsReverse className="text-[25px]" />
+                <BiDotsHorizontalRounded className="text-[25px]" />
+              </Link>
+            </div>
           </div>
         </div>
       </div>
