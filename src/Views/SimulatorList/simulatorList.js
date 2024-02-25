@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 // import AddSimulationCard from "../../Components/AddSimulationCard";
 import SimulationCard from "../../Components/SimulationCard";
 import { supabaseClient as supabase } from "../../config/supabase-client";
-import { Button, Loader, Stack } from "rsuite";
+import { Loader, Stack } from "rsuite";
 import AddSimulationCard from "../../Components/AddSimulationCard";
 import { useAuth } from "../../hooks/Auth";
 import SpaceTravelFast from "../../Components/SpaceTravelFast";
@@ -11,6 +11,7 @@ import { Gear, AddOutline } from "@rsuite/icons";
 import SifiCard from "../../Components/SifiCard";
 import SifiRandom from "../../Components/SifiRandom";
 import SimulationListItem from "./SimulationListItem";
+import Button1 from "../../Components/Button1";
 
 function SimulatorList() {
   const [simulations, setSimulations] = useState(null);
@@ -66,14 +67,13 @@ function SimulatorList() {
     <>
       <div className="bg-black-500 grid grid-cols-2 px-7 py-2">
         <div className="grid-col w-full">
-          <Button>Collect All</Button>
-          <Button>Quick Collect</Button>
-          <Button>
-            <Gear />
-          </Button>
-        </div>
-        <div className="grid-col w-full">
-          <Button>SORT</Button>
+          <div className="flex flex-nowrap">
+            <Button1>Collect All</Button1>
+            <Button1>
+              <Gear />
+            </Button1>
+            <Button1>SORT</Button1>
+          </div>
         </div>
       </div>
       {loading ? (

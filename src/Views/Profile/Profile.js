@@ -107,7 +107,7 @@ function Profile() {
                     className="button block"
                     type="button"
                   >
-                    Inventory
+                    INVENTORY
                   </Button>
                   <Button
                     to={"/simulator"}
@@ -115,7 +115,7 @@ function Profile() {
                     className="button block"
                     type="button"
                   >
-                    Simulator
+                    SIMULATOR
                   </Button>
                   <Button
                     to={"/challenges"}
@@ -123,7 +123,15 @@ function Profile() {
                     className="button block"
                     type="button"
                   >
-                    Challenges
+                    CHALLENGES
+                  </Button>
+                  <Button
+                    to={"/trade"}
+                    as={NavLink}
+                    className="button block"
+                    type="button"
+                  >
+                    TRADE
                   </Button>
                 </SifiCard>
               </div>
