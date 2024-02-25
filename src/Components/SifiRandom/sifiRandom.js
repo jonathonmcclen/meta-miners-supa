@@ -24,6 +24,7 @@ function SifiRandom({ length, chars, delay }) {
   }
 
   useEffect(() => {
+    setString(makeid(length));
     setInterval(updateString, delay);
   }, []);
 
