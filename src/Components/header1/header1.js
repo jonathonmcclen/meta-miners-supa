@@ -10,7 +10,7 @@ function Header1() {
   const handleHamClose = () => setHamburgerOpen(false);
   return (
     <>
-      <div className="bg-[#000] h-[80px] tracking-widest hidden">
+      <div className="bg-[#000] h-[80px] tracking-widest hidden md:block">
         <div className="ml-[20px]">
           <div className="inline-block px-[20px] h-[80px] text-[#FFD1B2] items-center">
             <Link to="/">
@@ -28,7 +28,7 @@ function Header1() {
         </div>
       </div>
 
-      <div className="bg-[#000] h-[80px] tracking-widest">
+      <div className="bg-[#000] h-[80px] tracking-widest md:hidden">
         <div className="ml-[20px]">
           <div className="inline-block px-[20px] h-[80px] text-[#FFD1B2] items-center">
             <Link to="/">
@@ -40,7 +40,7 @@ function Header1() {
             className="absolute top-0 right-0 px-[20px] h-[80px] text-[#FFD1B2] items-center"
           >
             <RxHamburgerMenu
-              className="mt-[40px]"
+              className="mt-[30px]"
               style={{ fontSize: "30px" }}
             />
           </div>
@@ -57,15 +57,21 @@ function Header1() {
             X
           </p>
           <div>
-            <Link to="/">HOME</Link>
+            <Link onClick={handleHamClose} to="/">
+              HOME
+            </Link>
           </div>
           <div>
-            <Link to="/about">ABOUT</Link>
+            <Link onClick={handleHamClose} to="/about">
+              ABOUT
+            </Link>
           </div>
           <div>
-            <Link to="/release-notes">RELEASE NOTES</Link>
+            <Link onClick={handleHamClose} to="/release-notes">
+              RELEASE NOTES
+            </Link>
           </div>
-          <Link to="/login">
+          <Link onClick={handleHamClose} to="/login">
             <div className="w-full px-[30%] h-[80px] mx-auto text-center">
               <Button title={"LOGIN / REGISTER"} />
             </div>
