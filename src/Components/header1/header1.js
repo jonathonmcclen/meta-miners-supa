@@ -44,32 +44,28 @@ function Header1() {
               style={{ fontSize: "30px" }}
             />
           </div>
-
-          <Link to="/login">
-            <div className="inline-block px-[20px] h-[80px] ">
-              <Button title={"LOGIN / REGISTER"} />
-            </div>
-          </Link>
         </div>
       </div>
-
       {/* ----------HAMBERGER MENUE---------- */}
       {hamburgerOpen && (
         <div className="absolute top-0 right-0 w-full h-full bg-black">
-          <p className="text-4xl" onClick={handleHamClose}>
+          <p
+            className="text-3xl absolute top-0 right-0"
+            onClick={handleHamClose}
+          >
             X
           </p>
           <div>
-            <NavItem title="HOME" link="/" />
+            <Link to="/">HOME</Link>
           </div>
           <div>
-            <NavItem title="ABOUT" link="/about" />
+            <Link to="/about">ABOUT</Link>
           </div>
           <div>
-            <NavItem title="RELEASE NOTES" link="/release-notes" />
+            <Link to="/release-notes">RELEASE NOTES</Link>
           </div>
           <Link to="/login">
-            <div className="inline-block px-[20px] h-[80px] ">
+            <div className="w-full px-[30%] h-[80px] mx-auto text-center">
               <Button title={"LOGIN / REGISTER"} />
             </div>
           </Link>
