@@ -108,9 +108,6 @@ function SimulatorList() {
                   // </div>
                   <SimulationListItem sim={sim} />
                 ))}
-                {maxSims && (
-                  <AddSimulationCard locked={maxSims < simulations.length} />
-                )}
               </div>
             </div>
           </div>
