@@ -93,23 +93,22 @@ function SimulatorList() {
       ) : (
         <div>
           <div className="flex flex-wrap relative">
-            <div className="w-full sm:w-1/3">
-              <SifiCard title={"Simulator"}>
-                <p>.Sims</p>
-                <p>.Viva</p>
-              </SifiCard>
+            <SifiCard title={"Simulator"}>
+              <p>.Sims</p>
+              <p>.Viva</p>
+
               <SifiRandom length={10} chars={"--- "} delay={1000} />
-            </div>
-            <div className="w-full sm:w-2/3">
-              <div comp-category="Layout" className="">
-                {simulations?.map((sim, i) => (
-                  // <div>
-                  //   {sim.name} | 0 / {sim.gestation} {sim.uniq}
-                  // </div>
-                  <SimulationListItem sim={sim} />
-                ))}
+              <div className="w-full">
+                <div comp-category="Layout" className="">
+                  {simulations?.map((sim, i) => (
+                    // <div>
+                    //   {sim.name} | 0 / {sim.gestation} {sim.uniq}
+                    // </div>
+                    <SimulationListItem sim={sim} />
+                  ))}
+                </div>
               </div>
-            </div>
+            </SifiCard>
           </div>
         </div>
       )}

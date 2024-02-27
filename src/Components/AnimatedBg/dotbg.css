@@ -1,7 +1,7 @@
 .dot-blur {
     background-image: radial-gradient(rgba(0,0,0,0) 1px, #161616 1px);
     background-size: 10px 10px;
-    backdrop-filter: blur(12px);
+    backdrop-filter: blur(15px);
 }
 
 .bg{
