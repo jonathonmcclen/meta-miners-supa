@@ -1,14 +1,5 @@
 import { useEffect, useState } from "react";
-import {
-  Container,
-  Content,
-  Form,
-  ButtonToolbar,
-  Panel,
-  FlexboxGrid,
-  Loader,
-  IconButton,
-} from "rsuite";
+import { Container, Form, ButtonToolbar, IconButton } from "rsuite";
 import { supabaseClient } from "../config/supabase-client";
 import { Session } from "@supabase/supabase-js";
 import OffRoundIcon from "@rsuite/icons/OffRound";
@@ -16,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import SifiCard from "../Components/SifiCard";
 import Button from "../Components/Button";
 import Button1 from "../Components/Button1";
+import Loader from "../Components/Loader";
 
 function Login() {
   const [email, setEmail] = useState("");

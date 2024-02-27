@@ -9,7 +9,6 @@ import { supabaseClient as supabase } from "../../config/supabase-client";
 import Avatar from "../Avatar";
 import NavItem from "../NavItem";
 import { RxHamburgerMenu } from "react-icons/rx";
-import { Planet } from "react-planet";
 
 function Header2() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -155,37 +154,6 @@ function Header2() {
               <Button title={"LOGOUT"} color="#ffc700" />
             </div>
           </div>
-          <Planet
-            centerContent={
-              <div
-                style={{
-                  height: 100,
-                  width: 100,
-                  borderRadius: "50%",
-                  backgroundColor: "#1da8a4",
-                }}
-              />
-            }
-            open
-            autoClose
-          >
-            <div
-              style={{
-                height: 70,
-                width: 70,
-                borderRadius: "50%",
-                backgroundColor: "#9257ad",
-              }}
-            />
-            <div
-              style={{
-                height: 70,
-                width: 70,
-                borderRadius: "50%",
-                backgroundColor: "#9257ad",
-              }}
-            />
-          </Planet>
         </div>
       )}
     </>
