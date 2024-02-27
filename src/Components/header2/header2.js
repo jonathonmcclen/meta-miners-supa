@@ -47,7 +47,7 @@ function Header2() {
       <NewsScroller />
       <div className="bg-[#000] noselect hidden md:block ">
         <div className="ml-[20px] tracking-widest">
-          <div className=" inline-block px-[20px] h-[80px] text-[#22FC37] items-center">
+          <div className="inline-block px-[20px] h-[80px] text-[#FFD1B2] items-center">
             <Link to="/">
               <p className="mt-[30px]  text-4xl font-thin">SIMULATION MINERS</p>
             </Link>
