@@ -9,6 +9,7 @@ import { supabaseClient as supabase } from "../../config/supabase-client";
 import Avatar from "../Avatar";
 import NavItem from "../NavItem";
 import { RxHamburgerMenu } from "react-icons/rx";
+import { Planet } from "react-planet";
 
 function Header2() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -92,7 +93,7 @@ function Header2() {
             className="absolute top-0 right-0 px-[20px] h-[80px] text-[#FFD1B2] items-center"
           >
             <RxHamburgerMenu
-              className="mt-[30px]"
+              className="mt-[62px]"
               style={{ fontSize: "30px" }}
             />
           </div>
@@ -101,7 +102,7 @@ function Header2() {
 
       {/* ----------HAMBERGER MENUE---------- */}
       {hamburgerOpen && (
-        <div className="absolute top-0 right-0 w-full h-full bg-black z-50 p-[40px]">
+        <div className="sticky top-0 right-0 w-full h-full bg-black z-50 p-[40px]">
           <p
             className="text-3xl absolute top-0 right-0 mt-[35px] mr-[25px]"
             onClick={handleHamClose}
@@ -154,6 +155,37 @@ function Header2() {
               <Button title={"LOGOUT"} color="#ffc700" />
             </div>
           </div>
+          <Planet
+            centerContent={
+              <div
+                style={{
+                  height: 100,
+                  width: 100,
+                  borderRadius: "50%",
+                  backgroundColor: "#1da8a4",
+                }}
+              />
+            }
+            open
+            autoClose
+          >
+            <div
+              style={{
+                height: 70,
+                width: 70,
+                borderRadius: "50%",
+                backgroundColor: "#9257ad",
+              }}
+            />
+            <div
+              style={{
+                height: 70,
+                width: 70,
+                borderRadius: "50%",
+                backgroundColor: "#9257ad",
+              }}
+            />
+          </Planet>
         </div>
       )}
     </>
