@@ -93,10 +93,7 @@ function Simulator() {
               <SifiRandom length={10} chars={"--- "} delay={1000} />
             </div>
             <div className="w-full sm:w-2/3">
-              <div
-                comp-category="Layout"
-                className="grid relative grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-1"
-              >
+              <div className="" style={{ overflowX: "scroll" }}>
                 {simulations?.map((sim, i) => (
                   <SimulationCard sim={sim} />
                 ))}
