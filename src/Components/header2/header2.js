@@ -101,7 +101,7 @@ function Header2() {
 
       {/* ----------HAMBERGER MENUE---------- */}
       {hamburgerOpen && (
-        <div className="fixed top-0 right-0 w-full h-full bg-black z-50 p-[40px]">
+        <div className="fixed top-0 right-0 w-full h-[120vh] bg-black z-50 p-[40px]">
           <p
             className="text-3xl absolute top-0 right-0 mt-[35px] mr-[25px]"
             onClick={handleHamClose}
