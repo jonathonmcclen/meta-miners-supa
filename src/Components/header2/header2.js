@@ -101,7 +101,7 @@ function Header2() {
 
       {/* ----------HAMBERGER MENUE---------- */}
       {hamburgerOpen && (
-        <div className="sticky top-0 right-0 w-full h-full bg-black z-50 p-[40px]">
+        <div className="absolute top-0 right-0 w-full h-full bg-black z-50 p-[40px]">
           <p
             className="text-3xl absolute top-0 right-0 mt-[35px] mr-[25px]"
             onClick={handleHamClose}
@@ -135,12 +135,8 @@ function Header2() {
 
             <SifiRandom length={100} chars={"_- "} delay={2000} />
           </div>
-
-          <div
-            onClick={handleSignOut}
-            className="w-full px-[20%] h-[80px] mx-auto text-center"
-          >
-            {currentUser && (
+          {currentUser && (
+            <Link to="/profile" onClick={handleHamClose}>
               <div className="mt-[30px]">
                 <Avatar
                   title={currentUser?.username}
@@ -149,7 +145,12 @@ function Header2() {
                   bgColor={`#${currentUser["bg"]}`}
                 />
               </div>
-            )}
+            </Link>
+          )}
+          <div
+            onClick={handleSignOut}
+            className="w-full px-[20%] h-[80px] mx-auto text-center"
+          >
             <div className="mt-[30px]">
               <Button title={"LOGOUT"} color="#ffc700" />
             </div>
