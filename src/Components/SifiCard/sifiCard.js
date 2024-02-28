@@ -40,8 +40,8 @@ function SifiCard({
           )}
           <div className="sifi-body">{children}</div>
         </div>
-        <div className="bot-left-corner"></div>
-        <div className="bot-right-corner"></div>
+        <div className="bot-left-corner z-[-1]"></div>
+        <div className="bot-right-corner z-[-1]"></div>
       </div>
     </>
   );
