@@ -111,13 +111,13 @@ function Inventory() {
               </div>
 
               <Panel>
-                <Stack wrap spacing={6}>
+                <div className="flex flex-wrap">
                   {searchTerm
                     ? returnItems(items, searchTerm).map((item, i) => (
                         <ItemCard item={item} />
                       ))
                     : items.map((item) => <ItemCard item={item} />)}
-                </Stack>
+                </div>
               </Panel>
             </SifiCard>
           </Stack>

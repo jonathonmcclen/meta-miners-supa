@@ -100,29 +100,27 @@ function Challenges() {
       {challenges ? (
         <>
           <h1>Challenges</h1>
-          <SifiRandom length={10} delay={1} />
           <div style={{ overflow: "hidden", whiteSpace: "nowrap" }}>
             <SifiRandom length={1000} delay={1000} chars={"- "} />
             <SifiRandom length={1000} delay={1000} chars={"- "} />
             <SifiRandom length={1000} delay={1000} chars={" □"} />
           </div>
-          <Stack style={{ overflowX: "scroll" }}>
+          <div className="flex" style={{ overflowX: "scroll" }}>
             {challenges?.map((challenge, i) => (
               <>
-                <Stack
+                <div
                   direction="row"
                   spacing={0}
                   alignItems="center"
                   style={{ margin: 0 }}
                 >
                   {/* Body */}
-                  <div style={{ height: "100%" }}>
+                  <div>
                     <div
                       style={{
                         maxWidth: "1800px",
                         minWidth: "300px",
                         margin: "20px",
-                        minHeight: "1000px",
                       }}
                       onClick={(event) => getCollection(challenge["id"])}
                     >
@@ -144,7 +142,7 @@ function Challenges() {
                       </SifiCard>
                     </div>
                   </div>
-                </Stack>
+                </div>
 
                 {/* <Panel
                 onClick={(event) => getCollection(challenge["id"])}
@@ -155,7 +153,7 @@ function Challenges() {
               </Panel> */}
               </>
             ))}
-          </Stack>
+          </div>
           {/* DRAWER */}
           <Drawer open={open} onClose={() => setOpen(false)}>
             <Drawer.Header>
@@ -168,11 +166,11 @@ function Challenges() {
               </Drawer.Actions>
             </Drawer.Header>
             <Drawer.Body>
-              <Stack wrap spacing={5}>
+              <div className="flex flex-wrap" wrap spacing={5}>
                 {collection?.map((item) => (
                   <ItemDropCard outline={true} item={item} />
                 ))}
-              </Stack>
+              </div>
             </Drawer.Body>
           </Drawer>
         </>

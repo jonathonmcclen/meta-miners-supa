@@ -47,7 +47,7 @@ function Header2() {
       <NewsScroller />
       <div className="bg-[#000] noselect hidden md:block ">
         <div className="ml-[20px] tracking-widest">
-          <div className=" inline-block px-[20px] h-[80px] text-[#22FC37] items-center">
+          <div className="inline-block px-[20px] h-[80px] text-[#FFD1B2] items-center">
             <Link to="/">
               <p className="mt-[30px]  text-4xl font-thin">SIMULATION MINERS</p>
             </Link>
@@ -92,7 +92,7 @@ function Header2() {
             className="absolute top-0 right-0 px-[20px] h-[80px] text-[#FFD1B2] items-center"
           >
             <RxHamburgerMenu
-              className="mt-[30px]"
+              className="mt-[62px]"
               style={{ fontSize: "30px" }}
             />
           </div>
@@ -101,7 +101,7 @@ function Header2() {
 
       {/* ----------HAMBERGER MENUE---------- */}
       {hamburgerOpen && (
-        <div className="absolute top-0 right-0 w-full h-full bg-black z-50 p-[40px]">
+        <div className="fixed top-0 right-0 w-full h-[120vh] bg-black z-50 p-[40px]">
           <p
             className="text-3xl absolute top-0 right-0 mt-[35px] mr-[25px]"
             onClick={handleHamClose}
@@ -135,12 +135,8 @@ function Header2() {
 
             <SifiRandom length={100} chars={"_- "} delay={2000} />
           </div>
-
-          <div
-            onClick={handleSignOut}
-            className="w-full px-[20%] h-[80px] mx-auto text-center"
-          >
-            {currentUser && (
+          {currentUser && (
+            <Link to="/profile" onClick={handleHamClose}>
               <div className="mt-[30px]">
                 <Avatar
                   title={currentUser?.username}
@@ -149,7 +145,12 @@ function Header2() {
                   bgColor={`#${currentUser["bg"]}`}
                 />
               </div>
-            )}
+            </Link>
+          )}
+          <div
+            onClick={handleSignOut}
+            className="w-full px-[20%] h-[80px] mx-auto text-center"
+          >
             <div className="mt-[30px]">
               <Button title={"LOGOUT"} color="#ffc700" />
             </div>

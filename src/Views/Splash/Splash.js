@@ -5,7 +5,7 @@ function Splash() {
   return (
     <>
       {/*----------SECTION 1----------*/}
-      <div className="crt mt-[100px] md:mt-0 section w-full overflow-hidden h-screen max-h-[90vh] flex gap-12 md:gap-0 flex-row place-items-center">
+      <div className="crt mt-0 section w-full overflow-hidden h-screen max-h-[90vh] flex gap-12 md:gap-0 flex-row place-items-center">
         <div className="w-2/3 md:w-1/2 flex flex-col place-items-end">
           <h1 className="text-3xl md:text-5xl lg:text-7xl mb-2 uppercase font-thin tracking-widest">
             Do you want <br />
@@ -48,20 +48,19 @@ function Splash() {
       {/*----------SECTION 3----------*/}
       <div className="sect">
         <div className="w-full py-auto h-[800px] bg-no-repeat bg-center bg-[url(https://nrpcmqkzpwyhpqnxkftn.supabase.co/storage/v1/object/public/mics/RedPlanet.png?t=2024-02-24T03%3A43%3A19.358Z)]">
-          <div className="pt-[180px] md:pt-[250px] max-w-[800px] m-auto">
+          <div className="pt-[100px] md:pt-[180px] px-[20px] max-w-[800px] m-auto">
             <SifiCard title="Welcome To Meta Miners">
-              <p className="text-lg">
-                Are you ready for an exhilarating gaming experience? Look no
-                further than "MEAT MINERS"! This free-to-play game combines the
-                excitement of mining cryptocurrency with the thrill of
+              <p className="text-lg md:text-2xl">
+                META MINERS is a free-to-play Idle collectors game that combines
+                the excitement of mining cryptocurrency with the thrill of
                 collecting NFTs. Immerse yourself in a simulated universe, where
                 entire planets come to life as the locals pay tribute to their
                 creator. With over 200+ items to collect from 5 obscure and
                 unique worlds, the possibilities are endless. Whether you're a
                 seasoned gamer or a work-from-home superstar looking for an idle
-                game demo, "MEAT MINERS" offers an adventure like no other. Get
-                ready to dive into a world of endless possibilities and become
-                the ultimate crypto-collecting champion!
+                game to make time fly, META MINERS scratches the itch like no
+                other. Get ready to dive into a world of endless possibilities
+                and become the ultimate META Miners champion!
               </p>
               <p>Start Mining Today!</p>
             </SifiCard>

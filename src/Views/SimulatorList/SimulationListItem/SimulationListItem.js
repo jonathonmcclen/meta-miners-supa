@@ -23,6 +23,7 @@ import ItemDropCard from "../../../Components/ItemDropCard";
 import FlippableCard from "../../../Components/FlippableCard";
 import Modal from "../../../Components/Modal";
 import Button from "../../../Components/Button";
+import Button1 from "../../../Components/Button1";
 
 function SimulationListItem({ sim }) {
   const [percent, setPercent] = useState(0); //progress towards collectable
@@ -256,11 +257,10 @@ function SimulationListItem({ sim }) {
           </div>
         )}
         <div>
-          <Button
-            title={"close"}
-            onClick={handleCloseModal}
-            appearance="primary"
-          />
+          <div onClick={handleCloseModal}>
+            <Button1>CLOSE</Button1>
+          </div>
+
           <Button
             title={"Go To Inventory"}
             onClick={handleCloseModal}

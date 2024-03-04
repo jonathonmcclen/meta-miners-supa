@@ -44,92 +44,85 @@ function BlackMarket() {
         style={{ marginTop: 30 }}
       >
         {/* Body */}
-        <SifiCard style={{ overflow: "auto" }}>
-          <SifiCard2 header={false}>
-            <div style={{}}>
-              <h4>Looking for materials</h4>
-              <hr />
-              <p>
-                First, welcome miner! I know your itching to get started mining,
-                simulating fantastical worlds and mining them for collectible
-                resources. META MINERS is a idle mining platform. Feel free to
-                go about your business while your set up simulators produce
-                resources every 20-30 minutes. as you colect items/resources you
-                can choose to sell them for eC {"("} eatherCoin {")"}. eC be
-                used to buy resources from other MINERS as well as purchase more
-                simulation types for a chance of higher rarity drops. The choice
-                is yours!
-              </p>
-            </div>
-          </SifiCard2>{" "}
-          <SifiCard header={false}>
-            <div style={{}}>
-              <h4>Looking for materials</h4>
-              <hr />
-              <p>
-                First, welcome miner! I know your itching to get started mining,
-                simulating fantastical worlds and mining them for collectible
-                resources. META MINERS is a idle mining platform. Feel free to
-                go about your business while your set up simulators produce
-                resources every 20-30 minutes. as you colect items/resources you
-                can choose to sell them for eC {"("} eatherCoin {")"}. eC be
-                used to buy resources from other MINERS as well as purchase more
-                simulation types for a chance of higher rarity drops. The choice
-                is yours!
-              </p>
-            </div>
-          </SifiCard>{" "}
-          <SifiCard header={false}>
-            <div style={{}}>
-              <h4>Looking for materials</h4>
-              <hr />
-              <p>
-                First, welcome miner! I know your itching to get started mining,
-                simulating fantastical worlds and mining them for collectible
-                resources. META MINERS is a idle mining platform. Feel free to
-                go about your business while your set up simulators produce
-                resources every 20-30 minutes. as you colect items/resources you
-                can choose to sell them for eC {"("} eatherCoin {")"}. eC be
-                used to buy resources from other MINERS as well as purchase more
-                simulation types for a chance of higher rarity drops. The choice
-                is yours!
-              </p>
-            </div>
-          </SifiCard>
-          <SifiCard header={false}>
-            <div style={{}}>
-              <h4>Looking for materials</h4>
-              <hr />
-              <p>
-                First, welcome miner! I know your itching to get started mining,
-                simulating fantastical worlds and mining them for collectible
-                resources. META MINERS is a idle mining platform. Feel free to
-                go about your business while your set up simulators produce
-                resources every 20-30 minutes. as you colect items/resources you
-                can choose to sell them for eC {"("} eatherCoin {")"}. eC be
-                used to buy resources from other MINERS as well as purchase more
-                simulation types for a chance of higher rarity drops. The choice
-                is yours!
-              </p>
-            </div>
-          </SifiCard>
-          <SifiCard header={false}>
-            <div style={{}}>
-              <h4>Looking for materials</h4>
-              <hr />
-              <p>
-                First, welcome miner! I know your itching to get started mining,
-                simulating fantastical worlds and mining them for collectible
-                resources. META MINERS is a idle mining platform. Feel free to
-                go about your business while your set up simulators produce
-                resources every 20-30 minutes. as you colect items/resources you
-                can choose to sell them for eC {"("} eatherCoin {")"}. eC be
-                used to buy resources from other MINERS as well as purchase more
-                simulation types for a chance of higher rarity drops. The choice
-                is yours!
-              </p>
-            </div>
-          </SifiCard>
+        <SifiCard2 header={false}>
+          <div style={{}}>
+            <h4>Looking for materials</h4>
+            <hr />
+            <p>
+              First, welcome miner! I know your itching to get started mining,
+              simulating fantastical worlds and mining them for collectible
+              resources. META MINERS is a idle mining platform. Feel free to go
+              about your business while your set up simulators produce resources
+              every 20-30 minutes. as you colect items/resources you can choose
+              to sell them for eC {"("} eatherCoin {")"}. eC be used to buy
+              resources from other MINERS as well as purchase more simulation
+              types for a chance of higher rarity drops. The choice is yours!
+            </p>
+          </div>
+        </SifiCard2>{" "}
+        <SifiCard header={false}>
+          <div style={{}}>
+            <h4>Looking for materials</h4>
+            <hr />
+            <p>
+              First, welcome miner! I know your itching to get started mining,
+              simulating fantastical worlds and mining them for collectible
+              resources. META MINERS is a idle mining platform. Feel free to go
+              about your business while your set up simulators produce resources
+              every 20-30 minutes. as you colect items/resources you can choose
+              to sell them for eC {"("} eatherCoin {")"}. eC be used to buy
+              resources from other MINERS as well as purchase more simulation
+              types for a chance of higher rarity drops. The choice is yours!
+            </p>
+          </div>
+        </SifiCard>{" "}
+        <SifiCard header={false}>
+          <div style={{}}>
+            <h4>Looking for materials</h4>
+            <hr />
+            <p>
+              First, welcome miner! I know your itching to get started mining,
+              simulating fantastical worlds and mining them for collectible
+              resources. META MINERS is a idle mining platform. Feel free to go
+              about your business while your set up simulators produce resources
+              every 20-30 minutes. as you colect items/resources you can choose
+              to sell them for eC {"("} eatherCoin {")"}. eC be used to buy
+              resources from other MINERS as well as purchase more simulation
+              types for a chance of higher rarity drops. The choice is yours!
+            </p>
+          </div>
+        </SifiCard>
+        <SifiCard header={false}>
+          <div style={{}}>
+            <h4>Looking for materials</h4>
+            <hr />
+            <p>
+              First, welcome miner! I know your itching to get started mining,
+              simulating fantastical worlds and mining them for collectible
+              resources. META MINERS is a idle mining platform. Feel free to go
+              about your business while your set up simulators produce resources
+              every 20-30 minutes. as you colect items/resources you can choose
+              to sell them for eC {"("} eatherCoin {")"}. eC be used to buy
+              resources from other MINERS as well as purchase more simulation
+              types for a chance of higher rarity drops. The choice is yours!
+            </p>
+          </div>
+        </SifiCard>
+        <SifiCard header={false}>
+          <div style={{}}>
+            <h4>Looking for materials</h4>
+            <hr />
+            <p>
+              First, welcome miner! I know your itching to get started mining,
+              simulating fantastical worlds and mining them for collectible
+              resources. META MINERS is a idle mining platform. Feel free to go
+              about your business while your set up simulators produce resources
+              every 20-30 minutes. as you colect items/resources you can choose
+              to sell them for eC {"("} eatherCoin {")"}. eC be used to buy
+              resources from other MINERS as well as purchase more simulation
+              types for a chance of higher rarity drops. The choice is yours!
+            </p>
+          </div>
         </SifiCard>
       </Stack>
     </>

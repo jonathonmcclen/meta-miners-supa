@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 // import AddSimulationCard from "../../Components/AddSimulationCard";
 import SimulationCard from "../../Components/SimulationCard";
 import { supabaseClient as supabase } from "../../config/supabase-client";
-import { Button, Loader, Stack } from "rsuite";
+import { Button } from "rsuite";
 import AddSimulationCard from "../../Components/AddSimulationCard";
 import { useAuth } from "../../hooks/Auth";
 import SpaceTravelFast from "../../Components/SpaceTravelFast";
@@ -11,6 +11,7 @@ import { Gear, AddOutline } from "@rsuite/icons";
 import SifiCard from "../../Components/SifiCard";
 import SifiRandom from "../../Components/SifiRandom";
 import { Link } from "react-router-dom";
+import Loader from "../../Components/Loader";
 
 function Simulator() {
   const [simulations, setSimulations] = useState(null);
@@ -92,10 +93,7 @@ function Simulator() {
               <SifiRandom length={10} chars={"--- "} delay={1000} />
             </div>
             <div className="w-full sm:w-2/3">
-              <div
-                comp-category="Layout"
-                className="grid relative grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-1"
-              >
+              <div className="" style={{ overflowX: "scroll" }}>
                 {simulations?.map((sim, i) => (
                   <SimulationCard sim={sim} />
                 ))}

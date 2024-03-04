@@ -15,8 +15,9 @@ import {
   ButtonToolbar,
 } from "rsuite";
 import SelectAvatar from "../../Components/SelectAvatar";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import SifiCard from "../../Components/SifiCard";
+import SifiRandom from "../../Components/SifiRandom";
 
 function Profile() {
   const [loading, setLoading] = useState(true);
@@ -101,38 +102,31 @@ function Profile() {
             <div className="flex flex-wrap w-full">
               <div className="w-full md:w-1/3">
                 <SifiCard header={false}>
-                  <Button
-                    to={"/inventory"}
-                    as={NavLink}
-                    className="button block"
-                    type="button"
-                  >
-                    INVENTORY
-                  </Button>
-                  <Button
-                    to={"/simulator"}
-                    as={NavLink}
-                    className="button block"
-                    type="button"
-                  >
-                    SIMULATOR
-                  </Button>
-                  <Button
-                    to={"/challenges"}
-                    as={NavLink}
-                    className="button block"
-                    type="button"
-                  >
-                    CHALLENGES
-                  </Button>
-                  <Button
-                    to={"/trade"}
-                    as={NavLink}
-                    className="button block"
-                    type="button"
-                  >
-                    TRADE
-                  </Button>
+                  <div>
+                    <Link to="/inventory">INVENTORY</Link>
+                    {"----"}
+                    <div className="inline-block">
+                      <SifiRandom length={10} />
+                    </div>
+                  </div>{" "}
+                  <div>
+                    <Link to="/simulator">SIMULATOR</Link> {"----"}
+                    <div className="inline-block">
+                      <SifiRandom length={10} />
+                    </div>
+                  </div>
+                  <div>
+                    <Link to="/challenges">CHALLENGES</Link> {"----"}
+                    <div className="inline-block">
+                      <SifiRandom length={10} />
+                    </div>
+                  </div>
+                  <div>
+                    <Link to="/trade">TRADE</Link> {"----"}
+                    <div className="inline-block">
+                      <SifiRandom length={10} />
+                    </div>
+                  </div>
                 </SifiCard>
               </div>
               <div className="w-full md:w-2/3">

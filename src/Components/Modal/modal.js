@@ -12,7 +12,7 @@ function Modal({ children, open }) {
       {isOpen && (
         <div
           style={{
-            backgroundColor: "rgba(255,255,255,0.5) ",
+            backgroundColor: "rgba(0,0,0,0.5) ",
             backdropFilter: "blur(3px)",
           }}
           className={"absolute top-0 left-0 w-[100vw] h-[100vh] z-50 "}

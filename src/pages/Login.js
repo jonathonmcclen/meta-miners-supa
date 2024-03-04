@@ -1,20 +1,13 @@
 import { useEffect, useState } from "react";
-import {
-  Container,
-  Content,
-  Form,
-  ButtonToolbar,
-  Panel,
-  FlexboxGrid,
-  Loader,
-  IconButton,
-} from "rsuite";
+import { Container, Form, ButtonToolbar, IconButton } from "rsuite";
 import { supabaseClient } from "../config/supabase-client";
 import { Session } from "@supabase/supabase-js";
 import OffRoundIcon from "@rsuite/icons/OffRound";
 import { useNavigate } from "react-router-dom";
 import SifiCard from "../Components/SifiCard";
 import Button from "../Components/Button";
+import Button1 from "../Components/Button1";
+import Loader from "../Components/Loader";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -68,7 +61,7 @@ function Login() {
       {/* <div className="absolute z-0 overflow-hidden h-[90vh]">
         <img src="https://nrpcmqkzpwyhpqnxkftn.supabase.co/storage/v1/object/public/mics/LoginPlanet.png" />
       </div> */}
-      <div className="z-50 center mt-[150px] mx-[5px] md:mx-[50px] lg:mx-[200px] xl:mx-[500px]">
+      <div className="z-50 center mt-[150px] mx-[50px] md:mx-[50px] lg:mx-[200px] xl:mx-[600px]">
         {!session ? (
           <>
             {/* <SifiCard title={"LOGIN"}> */}
@@ -93,15 +86,15 @@ function Login() {
               <Form.Group>
                 <ButtonToolbar>
                   <div onClick={Login}>
-                    <Button
+                    <Button1
                       title="Sign In"
                       appearance="primary"
                       onClick={Login}
                     >
                       Sign in
-                    </Button>
+                    </Button1>
                   </div>
-                  <Button appearance="link">Forgot password?</Button>
+                  <Button1>Forgot password?</Button1>
                 </ButtonToolbar>
               </Form.Group>
             </Form>
