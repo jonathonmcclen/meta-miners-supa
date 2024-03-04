@@ -123,4 +123,45 @@ function Splash() {
   );
 }
 
+// // Set the scroll amount for each "chunk"
+// const CHUNK_SIZE = 12; // pixels
+
+// // Throttle the scroll event to prevent performance issues
+// let isScrolling = false;
+// let lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+// window.addEventListener('scroll', () => {
+//   if (!isScrolling) {
+//     isScrolling = true;
+
+//     // Timeout to throttle the scroll event
+//     setTimeout(() => {
+//       // Determine the direction of the scroll
+//       const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+//       const scrollDown = currentScroll > lastScrollTop;
+
+//       // Calculate the next scroll position
+//       let nextScroll;
+//       if (scrollDown) {
+//         nextScroll = Math.ceil(currentScroll / CHUNK_SIZE) * CHUNK_SIZE;
+//       } else {
+//         nextScroll = Math.floor(currentScroll / CHUNK_SIZE) * CHUNK_SIZE;
+//       }
+
+//       // Scroll to the next chunk
+//       window.scrollTo({
+//         top: nextScroll,
+//         behavior: 'instant'
+//       });
+
+//       // Update last scroll position
+//       lastScrollTop = nextScroll;
+//       isScrolling = false;
+//     }, 12);
+//   } else {
+//     // Prevent default scrolling behavior while we are adjusting the scroll position
+//     event.preventDefault();
+//   }
+// }, { passive: false });
+
 export default Splash;
